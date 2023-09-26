@@ -1,22 +1,12 @@
 import styled, { css } from "styled-components";
 import media from "styled-media-query";
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-    padding: ${theme.spacings.large};
-    border-radius: 1rem;
-    max-width: 100%;
-    max-height: 100vh;
-    min-height: 100%;
-  `}
-`;
-
 export const WrapperTilteDescrition = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   padding: 2rem;
 
   & > span {
@@ -34,15 +24,13 @@ export const WrapperTilteDescrition = styled.div`
 `;
 
 export const WrapperInputs = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 2rem;
-  `}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  gap: 2rem;
 `;
 
 export const Input = styled.div`
@@ -54,16 +42,14 @@ export const Input = styled.div`
 `;
 
 export const CTA = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 
-    ${media.lessThan("medium")`
+  ${media.lessThan("medium")`
         flex-direction: column-reverse;
         width: 100%;
     `}
-  `}
 `;
 
 export const Registration = styled.div`

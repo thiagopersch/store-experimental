@@ -17,6 +17,7 @@
     "@mui/material": "^5.14.10",
     "@styled-icons/feather": "^10.47.0",
     "@styled-icons/material-outlined": "^10.47.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/cookie": "^0.5.2",
     "@types/cookies": "^0.7.8",
     "@types/node": "20.6.3",

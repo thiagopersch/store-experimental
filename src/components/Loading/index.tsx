@@ -1,11 +1,22 @@
 "use client";
+import { Container } from "@mui/material";
 import { OrbitSpinner } from "react-epic-spinners";
 
 const LoadingComponent = () => {
   return (
-    <div className="bg-primaryColor bg-opacity-5 flex items-center justify-center content-center h-screen w-screen">
+    <Container
+      maxWidth="sm"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
       <OrbitSpinner color="#6314A8" animationduration={3000} size={150} />
-    </div>
+    </Container>
   );
 };
 

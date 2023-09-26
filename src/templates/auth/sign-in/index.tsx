@@ -1,13 +1,16 @@
 "use client";
 
+import {
+  Button,
+  Container,
+  FormControl,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 
-import Button from "@/components/Button";
-import Heading from "@/components/Heading";
 import Base from "@/templates/Base";
-import SectionContainer from "@/components/SectionContainer";
-import TextInput from "@/components/TextInput";
-import TextComponent from "@/components/TextComponent";
 import { LogIn } from "@styled-icons/feather";
 
 import * as S from "./styles";
@@ -15,52 +18,49 @@ import * as S from "./styles";
 const SignIn = () => {
   return (
     <Base>
-      <S.Wrapper>
-        <SectionContainer>
-          <form action="#">
+      <Stack direction="column">
+        <Container maxWidth="sm">
+          <FormControl>
             <S.WrapperTilteDescrition>
-              <Heading size="md">Login do cliente</Heading>
-              <TextComponent color="darkGray">
+              <Typography
+                variant="h4"
+                component="h4"
+                color="primary"
+                sx={{ fontWeight: "bold" }}
+              >
+                Login do cliente
+              </Typography>
+              <Typography component="p" color="darkgray" align="center">
                 Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
                 experiência incrível! 🤩
-              </TextComponent>
+              </Typography>
             </S.WrapperTilteDescrition>
             <S.WrapperInputs>
-              <S.Input>
-                <TextInput name="email" label="E-mail" />
-              </S.Input>
-              <S.Input>
-                <TextInput name="password" label="Senha" />
-              </S.Input>
-              <S.CTA>
-                <Button size="large" icon={<LogIn />}>
-                  Entrar
-                </Button>
-              </S.CTA>
+              <TextField name="email" label="E-mail" />
+              <TextField name="password" label="Senha" />
+              <Button variant="contained" color="primary" endIcon={<LogIn />}>
+                Entrar
+              </Button>
               <S.Registration>
-                <TextComponent color="darkGray">
-                  Não tem cadastro?
-                </TextComponent>
+                <Typography color="darkgray">Não tem cadastro?</Typography>
                 <Link href="/sign-out" passHref>
-                  <TextComponent color="primaryColor">
-                    cadastre-se
-                  </TextComponent>
+                  <Typography color="primary">cadastre-se</Typography>
                 </Link>
               </S.Registration>
               <S.PrivacyPolicy>
-                <TextComponent color="darkGray">
+                <Typography color="darkGray">
                   Ao continuar com acesso, você concorda com a nossa
                   <Link href="#" passHref>
-                    <TextComponent color="primaryColor">
+                    <Typography color="primary">
                       politica de privacidade
-                    </TextComponent>
+                    </Typography>
                   </Link>
-                </TextComponent>
+                </Typography>
               </S.PrivacyPolicy>
             </S.WrapperInputs>
-          </form>
-        </SectionContainer>
-      </S.Wrapper>
+          </FormControl>
+        </Container>
+      </Stack>
     </Base>
   );
 };

@@ -4,6 +4,7 @@ import { ThemeOptions } from "@mui/material/styles";
 declare module "@mui/material/styles" {
   interface Theme {
     palette: {
+      common: NodeReact;
       primary: string;
       secondary: string;
       error: string;
@@ -21,6 +22,7 @@ declare module "@mui/material/styles" {
       warning: React.CSSProperties["color"];
       info: React.CSSProperties["color"];
       success: React.CSSProperties["color"];
+      common: React.CSSProperties["color"];
     };
   }
 }
