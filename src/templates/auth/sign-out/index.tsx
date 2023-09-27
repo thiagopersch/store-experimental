@@ -1,55 +1,204 @@
 "use client";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
+import { Fragment, ReactNode, useState } from "react";
+
+import { AuthInputsSignOut } from "@/components/AuthInputsSignOut";
+import { CreateInputsSignOut } from "@/components/CreateInputsSignOut";
 import Base from "@/templates/Base";
-import Heading from "@/components/Heading";
-import SectionContainer from "@/components/SectionContainer";
-import TextComponent from "@/components/TextComponent";
-import TextInput from "@/components/TextInput";
 
-import * as S from "./styles";
-import RadioButton from "@/components/RadioButton";
-import { TextField } from "@mui/material";
+const steps = ["Dados básicos", "Acessar sua conta"];
 
 const SignOut = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set<number>());
+
+  const isStepOptional = (step: number) => {
+    return step === 1;
+  };
+
+  const isStepSkipped = (step: number) => {
+    return skipped.has(step);
+  };
+
+  const handleNext = () => {
+    let newSkipped = skipped;
+    if (isStepSkipped(activeStep)) {
+      newSkipped = new Set(newSkipped.values());
+      newSkipped.delete(activeStep);
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped(newSkipped);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSkip = () => {
+    if (!isStepOptional(activeStep)) {
+      // You probably want to guard against something like this,
+      // it should never occur unless someone's actively trying to break something.
+      throw new Error("You can't skip a step that isn't optional.");
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped((prevSkipped) => {
+      const newSkipped = new Set(prevSkipped.values());
+      newSkipped.add(activeStep);
+      return newSkipped;
+    });
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
   return (
     <Base>
-      <SectionContainer>
-        <S.WrapperTilteDescrition>
-          <Heading size="md">Crie seu cadastro</Heading>
-          <TextComponent>
-            Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
-            experiência incrível! 🤩
-          </TextComponent>
-        </S.WrapperTilteDescrition>
-        <TextField variant="filled" name="name" label="Nome completo" />
-        <S.WrapperInputs>
-          {/* <TextInput name="email" label="E-mail" type="email" />
-          <TextInput name="birth_date" label="Data de nascimento" type="date" />
-          <TextInput name="cpf" label="CPF" />
-          <TextInput name="phone" label="Celular" />
-          <TextInput name="password" label="Senha" type="password" /> */}
-          <FormControl>
-            <FormLabel id="sex">Sexo</FormLabel>
-            <RadioGroup
-              aria-labelledby="sex"
-              defaultValue="female"
-              name="radio-buttons-group"
+      <Stack
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          width: "100%",
+          height: "50rem",
+          padding: "2rem",
+        }}
+      >
+        <Container maxWidth="sm">
+          <Box sx={{ width: "100%" }}>
+            <Stepper activeStep={activeStep}>
+              {steps.map((label, index) => {
+                const stepProps: { completed?: boolean } = {};
+                const labelProps: {
+                  optional?: ReactNode;
+                } = {};
+                // if (isStepOptional(index)) {
+                //   labelProps.optional = (
+                //     <Typography variant="caption">Optional</Typography>
+                //   );
+                // }
+                // if (isStepSkipped(index)) {
+                //   stepProps.completed = false;
+                // }
+                return (
+                  <Step key={label} {...stepProps}>
+                    <StepLabel {...labelProps}>{label}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+                padding: "2rem",
+              }}
             >
-              <FormControlLabel
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-            </RadioGroup>
-          </FormControl>
-        </S.WrapperInputs>
-      </SectionContainer>
+              {activeStep === steps.length ? (
+                <Fragment>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      pt: 2,
+                    }}
+                  >
+                    <Button variant="contained" onClick={handleReset}>
+                      Voltar tudo
+                    </Button>
+                  </Box>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  {activeStep === 0 ? (
+                    <>
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        gap={2}
+                        flexGrow="1"
+                      >
+                        <Typography
+                          variant="h4"
+                          component="h4"
+                          color="primary"
+                          fontWeight="600"
+                          textAlign="center"
+                        >
+                          Crie seu cadastro
+                        </Typography>
+                        <Typography
+                          component="p"
+                          color="darkgray"
+                          textAlign="center"
+                        >
+                          Veja seus pedidos de forma fácil, compre mais rápido e
+                          tenha uma experiência incrível! 🤩
+                        </Typography>
+                        <CreateInputsSignOut />
+                      </Box>
+                    </>
+                  ) : (
+                    <>
+                      <Typography
+                        variant="h4"
+                        component="h4"
+                        color="primary"
+                        fontWeight="600"
+                        textAlign="center"
+                      >
+                        Agora realize o login
+                      </Typography>
+                      <Typography
+                        component="p"
+                        color="darkgray"
+                        textAlign="center"
+                      >
+                        Veja seus pedidos de forma fácil, compre mais rápido e
+                        tenha uma experiência incrível! 🤩
+                      </Typography>
+                      <AuthInputsSignOut />
+                    </>
+                  )}
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    flexGrow={1}
+                    paddingTop="2"
+                  >
+                    <Button
+                      color="secondary"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Voltar
+                    </Button>
+                    <Button variant="contained" onClick={handleNext}>
+                      {activeStep === steps.length - 1 ? "Acessar" : "Avançar"}
+                    </Button>
+                  </Box>
+                </Fragment>
+              )}
+            </Box>
+          </Box>
+        </Container>
+      </Stack>
     </Base>
   );
 };

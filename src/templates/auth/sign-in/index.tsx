@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Box,
   Button,
   Container,
   FormControl,
@@ -11,14 +12,23 @@ import {
 import Link from "next/link";
 
 import Base from "@/templates/Base";
-import { LogIn } from "@styled-icons/feather";
+import LoginOutlined from "@mui/icons-material/LoginOutlined";
 
 import * as S from "./styles";
 
 const SignIn = () => {
   return (
     <Base>
-      <Stack direction="column">
+      <Stack
+        direction="column"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          width: "100vw",
+          height: "60vh",
+        }}
+      >
         <Container maxWidth="sm">
           <FormControl>
             <S.WrapperTilteDescrition>
@@ -35,10 +45,20 @@ const SignIn = () => {
                 experiência incrível! 🤩
               </Typography>
             </S.WrapperTilteDescrition>
-            <S.WrapperInputs>
-              <TextField name="email" label="E-mail" />
-              <TextField name="password" label="Senha" />
-              <Button variant="contained" color="primary" endIcon={<LogIn />}>
+            <Box
+              sx={{ flexGrow: 1 }}
+              display="flex"
+              flexDirection="column"
+              gap={3}
+            >
+              <TextField type="email" name="email" label="E-mail" />
+              <TextField type="password" name="password" label="Senha" />
+              <Button
+                variant="contained"
+                size="large"
+                color="primary"
+                endIcon={<LoginOutlined />}
+              >
                 Entrar
               </Button>
               <S.Registration>
@@ -57,7 +77,7 @@ const SignIn = () => {
                   </Link>
                 </Typography>
               </S.PrivacyPolicy>
-            </S.WrapperInputs>
+            </Box>
           </FormControl>
         </Container>
       </Stack>

@@ -6,8 +6,6 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { Search } from "@/components/Search";
 import { SearchIconWrapper } from "@/components/SearchIconWrapper";
@@ -16,7 +14,7 @@ import PageContainer from "@/components/PageContainer";
 
 import { LogIn } from "@styled-icons/feather";
 
-import LogoCompany from "@/assets/images/logo.png";
+import LogoCompany from "@/assets/images/white/logo.png";
 
 type BaseProps = {
   children?: React.ReactNode;
