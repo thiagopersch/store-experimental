@@ -1,20 +1,11 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Container, FormControl, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 import Base from "@/templates/Base";
-import LoginOutlined from "@mui/icons-material/LoginOutlined";
 
-import * as S from "./styles";
+import { FormSignin } from "@/components/FormSignin";
 
 const SignIn = () => {
   return (
@@ -31,7 +22,13 @@ const SignIn = () => {
       >
         <Container maxWidth="sm">
           <FormControl>
-            <S.WrapperTilteDescrition>
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              gap={4}
+              padding="1rem"
+            >
               <Typography
                 variant="h4"
                 component="h4"
@@ -40,35 +37,35 @@ const SignIn = () => {
               >
                 Login do cliente
               </Typography>
-              <Typography component="p" color="darkgray" align="center">
+              <Typography component="p" color="darkgray" textAlign="center">
                 Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
                 experiência incrível! 🤩
               </Typography>
-            </S.WrapperTilteDescrition>
+            </Box>
+            <form action="/">
+              <FormSignin />
+            </form>
             <Box
-              sx={{ flexGrow: 1 }}
               display="flex"
               flexDirection="column"
-              gap={3}
+              gap="1rem"
+              padding="1rem"
             >
-              <TextField type="email" name="email" label="E-mail" />
-              <TextField type="password" name="password" label="Senha" />
-              <Button
-                variant="contained"
-                size="large"
-                color="primary"
-                endIcon={<LoginOutlined />}
+              <Box
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                gap="0.5rem"
               >
-                Entrar
-              </Button>
-              <S.Registration>
                 <Typography color="darkgray">Não tem cadastro?</Typography>
                 <Link href="/sign-out" passHref>
-                  <Typography color="primary">cadastre-se</Typography>
+                  <Typography color="primary" sx={{ textDecoration: "none" }}>
+                    cadastre-se
+                  </Typography>
                 </Link>
-              </S.Registration>
-              <S.PrivacyPolicy>
-                <Typography color="darkGray">
+              </Box>
+              <Box display="flex" flexDirection="row" justifyContent="center">
+                <Typography color="darkGray" textAlign="center">
                   Ao continuar com acesso, você concorda com a nossa
                   <Link href="#" passHref>
                     <Typography color="primary">
@@ -76,7 +73,7 @@ const SignIn = () => {
                     </Typography>
                   </Link>
                 </Typography>
-              </S.PrivacyPolicy>
+              </Box>
             </Box>
           </FormControl>
         </Container>
