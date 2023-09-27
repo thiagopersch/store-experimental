@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
-
+import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ReactNode, Suspense } from "react";
 
-import ThemeContextProvider from "./theme-provider";
-
 import LoadingComponent from "@/components/Loading";
-import "@/styles/global.css";
+
+import ThemeContextProvider from "./theme-provider";
 
 const poppins = Poppins({
   style: "normal",
@@ -18,7 +16,12 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Store",
 };
-export default function RootLayout({ children }: { children: ReactNode }) {
+
+type ThemeProviderProps = {
+  children?: ReactNode | string;
+};
+
+export default function RootLayout({ children }: ThemeProviderProps) {
   return (
     <html lang="pt-br">
       <body className={poppins.className}>

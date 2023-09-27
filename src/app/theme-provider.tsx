@@ -1,41 +1,39 @@
 "use client";
 
 import { ThemeProvider } from "@mui/material";
-import { SessionProvider } from "next-auth/react";
-import { AppProps as NextAppProps } from "next/app";
+import NextNprogress from "nextjs-progressbar";
 import { ReactNode, createContext } from "react";
-import { Hydrate } from "react-query/hydration";
+import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
+import { queryClient } from "@/services/api";
 import GlobalStyles from "@/styles/global";
-
 import { theme } from "@/styles/theme";
+import { QueryClientProvider } from "react-query";
 
 export const ThemeContext = createContext("");
 
-type ThemeProviderProps = NextAppProps & {
-  Component: NextAppProps["Component"];
-  children: ReactNode | string;
+type ThemeProviderProps = {
+  children?: ReactNode | string;
 };
 
-export default function ThemeContextProvider({
-  children,
-  Component,
-  pageProps,
-}: ThemeProviderProps) {
+export default function ThemeContextProvider({ children }: ThemeProviderProps) {
   return (
-    <SessionProvider session={pageProps.session}>
-      {/* <QueryClientProvider client={queryClient}> */}
-      <Hydrate state={pageProps.dehydratedState}>
-        <ThemeContext.Provider value="dark">
-          <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-            {children}
-            <GlobalStyles />
-          </ThemeProvider>
-        </ThemeContext.Provider>
-      </Hydrate>
-    </SessionProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeContext.Provider value="light">
+        <ThemeProvider theme={theme}>
+          {children}
+          <NextNprogress
+            color="primary"
+            startPosition={0.3}
+            stopDelayMs={300}
+            height={5}
+          />
+          <GlobalStyles />
+          <ToastContainer />
+        </ThemeProvider>
+      </ThemeContext.Provider>
+    </QueryClientProvider>
   );
 }
