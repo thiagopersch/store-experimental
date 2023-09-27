@@ -37,14 +37,12 @@ const SignIn = () => {
               >
                 Login do cliente
               </Typography>
-              <Typography component="p" color="darkgray" textAlign="center">
+              <Typography component="div" color="darkgray" textAlign="center">
                 Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
                 experiência incrível! 🤩
               </Typography>
             </Box>
-            <form action="/">
-              <FormSignin />
-            </form>
+            <FormSignin />
             <Box
               display="flex"
               flexDirection="column"
@@ -57,18 +55,24 @@ const SignIn = () => {
                 justifyContent="center"
                 gap="0.5rem"
               >
-                <Typography color="darkgray">Não tem cadastro?</Typography>
+                <Typography color="darkgray" component="div">
+                  Não tem cadastro?
+                </Typography>
                 <Link href="/sign-out" passHref>
-                  <Typography color="primary" sx={{ textDecoration: "none" }}>
+                  <Typography
+                    component="div"
+                    color="primary"
+                    sx={{ textDecoration: "none" }}
+                  >
                     cadastre-se
                   </Typography>
                 </Link>
               </Box>
               <Box display="flex" flexDirection="row" justifyContent="center">
-                <Typography color="darkGray" textAlign="center">
+                <Typography component="div" color="darkGray" textAlign="center">
                   Ao continuar com acesso, você concorda com a nossa
                   <Link href="#" passHref>
-                    <Typography color="primary">
+                    <Typography component="div" color="primary">
                       politica de privacidade
                     </Typography>
                   </Link>

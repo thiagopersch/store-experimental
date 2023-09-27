@@ -1,4 +1,5 @@
 "use client";
+
 import { Container } from "@mui/material";
 import { OrbitSpinner } from "react-epic-spinners";
 
@@ -15,7 +16,7 @@ const LoadingComponent = () => {
         height: "100vh",
       }}
     >
-      <OrbitSpinner color="#6314A8" animationduration={3000} size={150} />
+      <OrbitSpinner color="#6314A8" animationduration={5000} size={150} />
     </Container>
   );
 };

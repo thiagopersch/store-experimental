@@ -1,25 +1,41 @@
 "use client";
 
-import { Suspense, createContext } from "react";
+import { ThemeProvider } from "@mui/material";
+import { SessionProvider } from "next-auth/react";
+import { AppProps as NextAppProps } from "next/app";
+import { ReactNode, createContext } from "react";
+import { Hydrate } from "react-query/hydration";
+
+import "react-toastify/dist/ReactToastify.css";
+
+import GlobalStyles from "@/styles/global";
 
 import { theme } from "@/styles/theme";
-import GlobalStyles from "@/styles/global";
-import { ThemeProvider } from "@mui/material";
 
 export const ThemeContext = createContext("");
 
-type ThemeProviderProps = {
-  children: React.ReactNode | string;
+type ThemeProviderProps = NextAppProps & {
+  Component: NextAppProps["Component"];
+  children: ReactNode | string;
 };
 
-export default function ThemeContextProvider({ children }: ThemeProviderProps) {
+export default function ThemeContextProvider({
+  children,
+  Component,
+  pageProps,
+}: ThemeProviderProps) {
   return (
-    <ThemeContext.Provider value="dark">
-      <ThemeProvider theme={theme}>
-        {children}
-        <GlobalStyles />
-        <Suspense />
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    <SessionProvider session={pageProps.session}>
+      {/* <QueryClientProvider client={queryClient}> */}
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeContext.Provider value="dark">
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+            {children}
+            <GlobalStyles />
+          </ThemeProvider>
+        </ThemeContext.Provider>
+      </Hydrate>
+    </SessionProvider>
   );
 }
