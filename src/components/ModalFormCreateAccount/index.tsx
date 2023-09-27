@@ -3,7 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import { CreateInputsSignOut } from "../CreateInputsSignOut";
 
-export const StepperComponent = () => {
+export const ModalFormCreateAccount = () => {
   return (
     <>
       <Box

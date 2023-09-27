@@ -1,8 +1,10 @@
 "use client";
 
-import { Box, Container, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
 
-import { StepperComponent } from "@/components/Stepper";
+import { ModalFormCreateAccount } from "@/components/ModalFormCreateAccount";
 import Base from "@/templates/Base";
 
 const SignOut = () => {
@@ -20,7 +22,7 @@ const SignOut = () => {
       >
         <Container maxWidth="sm">
           <Box sx={{ width: "100%" }}>
-            <StepperComponent />
+            <ModalFormCreateAccount />
           </Box>
         </Container>
       </Stack>

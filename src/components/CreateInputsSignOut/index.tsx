@@ -1,19 +1,17 @@
 "use client";
-import {
-  Box,
-  Button,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { ChangeEvent, useState } from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo/DemoContainer";
+import { ChangeEvent, StrictMode, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 
 type Sex = {
@@ -31,9 +29,8 @@ type CreateInputsSignOutProps = {
 
 export const CreateInputsSignOut = () => {
   const {
-    control,
-    register,
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm<CreateInputsSignOutProps>();
   const [value, setValue] = useState("male");
@@ -48,32 +45,22 @@ export const CreateInputsSignOut = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box display="flex" flexDirection="column" gap={1}>
-        <Controller
-          name="name"
-          control={control}
-          rules={{ required: true, maxLength: 255 }}
-          render={({ field }) => (
-            <TextField
-              id="name"
-              variant="filled"
-              type="text"
-              label="Nome completo"
-              required
-              aria-invalid={errors.name ? "true" : "false"}
-              {...field}
-            />
-          )}
+        <TextField
+          {...register("name", {
+            required: {
+              value: true,
+              message: `
+                  Nome completo é obrigatório.
+                `,
+            },
+          })}
+          aria-invalid={errors.name ? "true" : "false"}
+          id="name"
+          variant="filled"
+          type="text"
+          label="Nome completo"
+          required
         />
-        {errors.name?.type === "required" && (
-          <Typography
-            variant="body1"
-            component="span"
-            color="error"
-            role="error"
-          >
-            Nome completo é obrigatório.
-          </Typography>
-        )}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
             <DatePicker
@@ -90,12 +77,14 @@ export const CreateInputsSignOut = () => {
             />
           </DemoContainer>
         </LocalizationProvider>
-        <InputMask mask="999.999.999-99">
-          <TextField variant="filled" name="cpf" label="CPF" required />
-        </InputMask>
-        <InputMask mask="(99) 99999-9999">
-          <TextField variant="filled" name="phone" label="Celular" required />
-        </InputMask>
+        <StrictMode>
+          <InputMask mask="999.999.999-99">
+            <TextField variant="filled" name="cpf" label="CPF" required />
+          </InputMask>
+          <InputMask mask="(99) 99999-9999">
+            <TextField variant="filled" name="phone" label="Celular" required />
+          </InputMask>
+        </StrictMode>
         <FormLabel id="sex" filled required>
           Sexo
         </FormLabel>

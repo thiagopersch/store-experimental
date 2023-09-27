@@ -1,6 +1,10 @@
 "use client";
 
-import { Box, Container, FormControl, Stack, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import FormControl from "@mui/material/FormControl";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 import Base from "@/templates/Base";
