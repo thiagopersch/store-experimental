@@ -2,7 +2,7 @@
  * @tailwind base;
  * @tailwind components;
  * @tailwind utilities;
- *'
+ *
  */
 
 import {
@@ -31,20 +31,24 @@ const GlobalStyles: GlobalStyleComponent<
   }
 
   html {
-    /* font-size: 62.5%; */
+    font-size: 62.5%;
     scroll-behavior: smooth;
   }
   
   body {
     ${({ theme }) => css`
-      background: #fff;
-      font-size: 1rem;
-      color: #1b1c1d;
+      background-color: ${theme.colors.background.default};
+      font-size: ${theme.font.sizes.small};
+      color: ${theme.colors.common.black};
       outline: none;
     `}
 
     button {
       cursor: pointer;
+    }
+
+    a{
+      text-decoration: none !important;
     }
   }
 `;

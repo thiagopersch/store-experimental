@@ -1,11 +1,11 @@
-import { createTheme } from "@mui/material";
-
-export const theme = createTheme({
-  palette: {
-    mode: "light",
+export default {
+  colors: {
+    common: {
+      white: "#ffffff",
+      black: "#1B1C1D",
+    },
     background: {
       default: "#FAFAFA",
-      paper: "#FFFFFF",
     },
     text: {
       primary: "#1B1C1D",
@@ -16,7 +16,6 @@ export const theme = createTheme({
       main: "#6314A8",
       light: "#8243B9",
       dark: "#450E75",
-      contrastText: "#ffffff",
     },
     secondary: {
       main: "#D960AB",
@@ -48,9 +47,101 @@ export const theme = createTheme({
       dark: "#388e3c",
       contrastText: "#ffffff",
     },
-    common: {
-      white: "#ffffff",
-      black: "#1B1C1D",
+  },
+  font: {
+    weight: {
+      light: 300,
+      normal: 400,
+      medium: 500,
+      bold: 600,
+      mediumBold: 700,
+      black: 800,
+      extraBlack: 900,
+    },
+    sizes: {
+      xxsmall: "1rem",
+      xsmall: "1.2rem",
+      small: "1.6rem",
+      medium: "2.4rem",
+      large: "3.2rem",
+      xlarge: "4.0rem",
+      xxlarge: "4.8rem",
+      huge: "5.6rem",
+      xhuge: "6.4rem",
+    },
+    style: {
+      normal: "normal",
+      italic: "italic",
+      oblique: "oblique",
     },
   },
-});
+  breakpoints: {
+    medium: '"(max-width: 768px)"',
+  },
+  transition: {
+    fast: "all 0.3s ease-in-out;",
+    normal: "all 1s ease-in-out;",
+    slow: "all 2s ease-in-out;",
+  },
+  layers: {
+    base: 10,
+    menu: 20,
+    cardOverlay: 30,
+    card: 40,
+    overlay: 50,
+    modal: 60,
+    alwaysOnTop: 70,
+  },
+  spacings: {
+    none: "0rem",
+    xxsmall: "0.8rem",
+    xsmall: "1.8rem",
+    small: "2.4rem",
+    medium: "3.2rem",
+    large: "4.0rem",
+    xlarge: "4.8rem",
+    xxlarge: "5.6rem",
+    huge: "6.2rem",
+    xhuge: "6.4rem",
+  },
+  layout: {
+    display: {
+      block: "block",
+      inline: "inline",
+      flex: "flex",
+    },
+    flexDirection: {
+      row: "row",
+      column: "column",
+      rowReverse: "row-reverse",
+      columnReverse: "column-reverse",
+    },
+    flexWrap: {
+      wrap: "wrap",
+      nowrap: "nowrap",
+      wrapReverse: "wrap-reverse",
+    },
+    justifyContent: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      spaceBetween: "space-between",
+      spaceAround: "space-around",
+      spaceEvenly: "space-evenly",
+    },
+    alignItems: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      baseline: "baseline",
+      stretch: "stretch",
+    },
+    alignContent: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      spaceBetween: "space-between",
+      spaceAround: "space-around",
+    },
+  },
+} as const;

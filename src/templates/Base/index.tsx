@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import PageContainer from "@/components/PageContainer";
-import Box from "@mui/material/Box";
 
-import Navbar from "@/components/Navbar";
+import { Box } from "@/components/Box";
+import { Navbar } from "@/components/Navbar";
 
 type BaseProps = {
   children?: React.ReactNode;

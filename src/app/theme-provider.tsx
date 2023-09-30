@@ -1,16 +1,17 @@
 "use client";
 
-import { ThemeProvider } from "@mui/material";
 import NextNprogress from "nextjs-progressbar";
 import { ReactNode, createContext } from "react";
+import { QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
 import { queryClient } from "@/services/api";
+
 import GlobalStyles from "@/styles/global";
-import { theme } from "@/styles/theme";
-import { QueryClientProvider } from "react-query";
+import theme from "@/styles/theme";
+import { ThemeProvider } from "styled-components";
 
 export const ThemeContext = createContext("");
 
@@ -25,7 +26,7 @@ export default function ThemeContextProvider({ children }: ThemeProviderProps) {
         <ThemeProvider theme={theme}>
           {children}
           <NextNprogress
-            color="primary"
+            color={theme.colors.primary.main}
             startPosition={0.3}
             stopDelayMs={300}
             height={5}
