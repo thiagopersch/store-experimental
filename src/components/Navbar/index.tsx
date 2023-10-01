@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
-import Logo from "@/assets/images/white/logo.png";
 import { DefaultTheme } from "styled-components";
 
+import Logo from "@/assets/images/white/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,8 +22,8 @@ const Navbar = ({ children, color, position, sx }: NavbarProps) => {
         <Link href="/" passHref>
           <Image
             src={Logo}
-            width={200}
-            height={40}
+            width={150}
+            height={50}
             quality={80}
             alt="logo-link"
           />
