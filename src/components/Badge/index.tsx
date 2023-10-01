@@ -1,7 +1,7 @@
 import * as S from "./styles";
 
 export type BadgeProps = {
-  children: React.ReactNode;
+  children: React.ReactNode | string;
   styledType: "success" | "info" | "secondary" | "orange" | "error";
 };
 

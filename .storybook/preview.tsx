@@ -19,11 +19,11 @@ const preview: Preview = {
       values: [
         {
           name: "white",
-          value: theme.colors.background.white,
+          value: theme.colors.white,
         },
         {
           name: "black",
-          value: theme.colors.background.black,
+          value: theme.colors.black,
         },
       ],
     },
