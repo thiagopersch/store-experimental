@@ -5,10 +5,7 @@ export type BadgeProps = {
   styledType: "success" | "info" | "secondary" | "orange" | "error";
 };
 
-const Badge = ({
-  children,
-  styledType = "success",
-}: BadgeProps): JSX.Element => (
+const Badge = ({ children, styledType = "success" }: BadgeProps) => (
   <S.Wrapper styledType={styledType}>{children}</S.Wrapper>
 );
 

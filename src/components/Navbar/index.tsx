@@ -1,9 +1,14 @@
 import { ReactNode } from "react";
 
+import Logo from "@/assets/images/white/logo.png";
 import { DefaultTheme } from "styled-components";
-import { Box } from "../Box";
 
-type NavbarProps = {
+import Image from "next/image";
+import Link from "next/link";
+
+import * as S from "./styles";
+
+export type NavbarProps = {
   children?: string | ReactNode;
   color?: keyof DefaultTheme["colors"];
   position?: "absolute" | "fixed" | "relative" | "static" | "sticky";
@@ -12,7 +17,19 @@ type NavbarProps = {
 
 const Navbar = ({ children, color, position, sx }: NavbarProps) => {
   return (
-    <Box>teste</Box>
+    <S.Wrapper color={color}>
+      <S.LogoLink>
+        <Link href="/" passHref>
+          <Image
+            src={Logo}
+            width={200}
+            height={40}
+            quality={80}
+            alt="logo-link"
+          />
+        </Link>
+      </S.LogoLink>
+    </S.Wrapper>
     // <AppBar position="static">
     //   <Toolbar>
     //     <Box

@@ -1,5 +1,5 @@
-import React from "react";
 import type { Preview } from "@storybook/react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyles from "../src/styles/global";
@@ -15,15 +15,15 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: "black",
+      default: "white",
       values: [
         {
           name: "white",
-          value: theme.colors.white,
+          value: theme.colors.background.white,
         },
         {
           name: "black",
-          value: theme.colors.black,
+          value: theme.colors.background.black,
         },
       ],
     },

@@ -37,8 +37,9 @@ const GlobalStyles: GlobalStyleComponent<
   
   body {
     ${({ theme }) => css`
-      background-color: ${theme.colors.background.default};
+      background-color: ${theme.colors.background.white};
       font-size: ${theme.font.sizes.small};
+      font-family: ${theme.font.family.primary};
       color: ${theme.colors.common.black};
       outline: none;
     `}

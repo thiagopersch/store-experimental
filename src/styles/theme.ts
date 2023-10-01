@@ -5,12 +5,17 @@ export default {
       black: "#1B1C1D",
     },
     background: {
-      default: "#FAFAFA",
+      white: "#FAFAFA",
+      black: "#1B1C1D",
     },
     text: {
-      primary: "#1B1C1D",
-      secondary: "rgba(0, 0, 0, 0.54)",
-      disabled: "rgba(0, 0, 0, 0.38)",
+      primary: {
+        main: "#1B1C1D",
+        light: "rgba(0, 0, 0, 0.38)",
+      },
+      secondary: { main: "#252626", light: "rgba(0, 0, 0, 0.54)" },
+      white: "#FFFFFF",
+      disabled: { main: "#dddddd", light: "#A4A49F" },
     },
     primary: {
       main: "#6314A8",
@@ -49,6 +54,9 @@ export default {
     },
   },
   font: {
+    family: {
+      primary: "'Poppins', sans-serif",
+    },
     weight: {
       light: 300,
       normal: 400,
