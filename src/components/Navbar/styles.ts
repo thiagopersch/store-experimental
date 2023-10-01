@@ -9,8 +9,8 @@ export const Wrapper = styled.nav<NavbarProps>`
     align-items: center;
     height: 8rem;
     width: 100%;
-    color: ${theme.colors.text.white};
-    background-color: ${theme.colors.primary.main};
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.primaryMain};
     padding: ${theme.spacings.xsmall};
   `}
 `;
@@ -25,7 +25,7 @@ export const LogoLink = styled.div`
 
     > span {
       font-weight: ${theme.font.weight.normal};
-      color: ${theme.colors.info.light};
+      color: ${theme.colors.infoMain};
       margin-right: ${theme.spacings.xxsmall};
     }
   `}

@@ -1,57 +1,26 @@
 export default {
   colors: {
-    common: {
-      white: "#ffffff",
-      black: "#1B1C1D",
-    },
-    background: {
-      white: "#FAFAFA",
-      black: "#1B1C1D",
-    },
-    text: {
-      primary: {
-        main: "#1B1C1D",
-        light: "rgba(0, 0, 0, 0.38)",
-      },
-      secondary: { main: "#252626", light: "rgba(0, 0, 0, 0.54)" },
-      white: "#FFFFFF",
-      disabled: { main: "#dddddd", light: "#A4A49F" },
-    },
-    primary: {
-      main: "#6314A8",
-      light: "#8243B9",
-      dark: "#450E75",
-    },
-    secondary: {
-      main: "#D960AB",
-      light: "#E07FBB",
-      dark: "#974377",
-      contrastText: "#ffffff",
-    },
-    error: {
-      main: "#F0758D",
-      light: "#F390A3",
-      dark: "#A85162",
-      contrastText: "rgba(0, 0, 0, 0.87)",
-    },
-    warning: {
-      main: "#FFB946",
-      light: "#FFC76B",
-      dark: "#B28131",
-      contrastText: "rgba(0, 0, 0, 0.87)",
-    },
-    info: {
-      main: "#B0E0E6",
-      light: "#BFE6EB",
-      dark: "#7B9CA1",
-      contrastText: "rgba(0, 0, 0, 0.87)",
-    },
-    success: {
-      main: "#4caf50",
-      light: "#81c784",
-      dark: "#388e3c",
-      contrastText: "#ffffff",
-    },
+    white: "#FAFAFA",
+    black: "#1B1C1D",
+    disabled: "#A4A49F",
+    primaryMain: "#6314A8",
+    primaryDark: "#450E75",
+    primaryLight: "#8243B9",
+    secondaryMain: "#D960AB",
+    secondaryLight: "#E07FBB",
+    secondaryDark: "#974377",
+    errorMain: "#F0758D",
+    errorLight: "#F390A3",
+    errorDark: "#A85162",
+    warningMain: "#FFB946",
+    warningLight: "#FFC76B",
+    warningDark: "#B28131",
+    infoMain: "#B0E0E6",
+    infoLight: "#BFE6EB",
+    infoDark: "#7B9CA1",
+    successMain: "#4caf50",
+    successLight: "#81c784",
+    successDark: "#388e3c",
   },
   font: {
     family: {

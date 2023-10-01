@@ -37,10 +37,10 @@ const GlobalStyles: GlobalStyleComponent<
   
   body {
     ${({ theme }) => css`
-      background-color: ${theme.colors.background.white};
+      background-color: ${theme.colors.white};
       font-size: ${theme.font.sizes.small};
       font-family: ${theme.font.family.primary};
-      color: ${theme.colors.common.black};
+      color: ${theme.colors.black};
       outline: none;
     `}
 

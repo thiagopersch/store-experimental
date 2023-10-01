@@ -6,6 +6,8 @@ import Logo from "@/assets/images/white/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Box } from "../Box";
+import Button from "../Button";
 import * as S from "./styles";
 
 export type NavbarProps = {
@@ -29,6 +31,16 @@ const Navbar = ({ children, color, position, sx }: NavbarProps) => {
           />
         </Link>
       </S.LogoLink>
+      <Box sx={{ display: "flex" }}>
+        <div>
+          <input type="search" placeholder="Pesquise aqui..." />
+        </div>
+        <div>
+          <Link href="/sign-in">
+            <Button>Login</Button>
+          </Link>
+        </div>
+      </Box>
     </S.Wrapper>
     // <AppBar position="static">
     //   <Toolbar>

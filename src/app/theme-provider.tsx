@@ -26,7 +26,7 @@ export default function ThemeContextProvider({ children }: ThemeProviderProps) {
         <ThemeProvider theme={theme}>
           {children}
           <NextNprogress
-            color={theme.colors.primary.main}
+            color={theme.colors.primaryMain}
             startPosition={0.3}
             stopDelayMs={300}
             height={5}
