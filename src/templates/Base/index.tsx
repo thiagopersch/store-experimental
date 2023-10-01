@@ -1,12 +1,11 @@
-import * as React from "react";
-
 import PageContainer from "@/components/PageContainer";
+import { ReactNode } from "react";
 
 import { Box } from "@/components/Box";
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 type BaseProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export default function Base({ children }: BaseProps) {

@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
 import Badge from ".";
 
@@ -10,8 +10,8 @@ const meta: Meta<typeof Badge> = {
       type: "string",
     },
     styledType: {
-      control: { type: "select" },
-      options: ["success", "lightGrey", "blue", "orange", "danger", "lightRed"],
+      control: { type: "radio" },
+      options: ["success", "info", "secondary", "orange", "error"],
     },
   },
 };

@@ -135,13 +135,17 @@ export default {
       center: "center",
       baseline: "baseline",
       stretch: "stretch",
+      alignContent: {
+        start: "flex-start",
+        end: "flex-end",
+        center: "center",
+        spaceBetween: "space-between",
+        spaceAround: "space-around",
+      },
     },
-    alignContent: {
-      start: "flex-start",
-      end: "flex-end",
-      center: "center",
-      spaceBetween: "space-between",
-      spaceAround: "space-around",
-    },
+  },
+  shadows: {
+    default: "0.1rem 0.1rem 0.5rem 0.1rem rgba(0,0,0,0.5)",
+    NotFocus: "0.1rem 0.1rem 0.3rem 0.1rem rgba(0,0,0,0.3)",
   },
 } as const;

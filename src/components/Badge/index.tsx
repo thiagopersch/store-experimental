@@ -2,13 +2,7 @@ import * as S from "./styles";
 
 export type BadgeProps = {
   children: React.ReactNode;
-  styledType:
-    | "success"
-    | "lightGrey"
-    | "blue"
-    | "orange"
-    | "danger"
-    | "lightRed";
+  styledType: "success" | "info" | "secondary" | "orange" | "error";
 };
 
 const Badge = ({

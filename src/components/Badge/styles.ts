@@ -6,34 +6,24 @@ export type WrapperProps = Pick<BadgeProps, "styledType">;
 
 const wrapperModifiers = {
   success: (theme: DefaultTheme) => css`
-    background: ${theme.colors.babyGreen};
-    color: ${theme.colors.black};
-    box-shadow: ${theme.shadow.default};
+    background: ${theme.colors.success.main};
+    color: ${theme.colors.text.primary};
   `,
-  lightGrey: (theme: DefaultTheme) => css`
-    background: ${theme.colors.darkGray};
-    color: ${theme.colors.white};
-    box-shadow: ${theme.shadow.default};
+  info: (theme: DefaultTheme) => css`
+    background: ${theme.colors.info.main};
+    color: ${theme.colors.text.primary};
   `,
-  blue: (theme: DefaultTheme) => css`
-    background: ${theme.colors.babyBlue};
-    color: ${theme.colors.black};
-    box-shadow: ${theme.shadow.default};
+  secondary: (theme: DefaultTheme) => css`
+    background: ${theme.colors.secondary.main};
+    color: ${theme.colors.text.primary};
   `,
   orange: (theme: DefaultTheme) => css`
-    background: ${theme.colors.alert};
-    color: ${theme.colors.white};
-    box-shadow: ${theme.shadow.default};
+    background: ${theme.colors.warning.main};
+    color: ${theme.colors.text.primary};
   `,
-  danger: (theme: DefaultTheme) => css`
-    background: ${theme.colors.danger};
-    color: ${theme.colors.white};
-    box-shadow: ${theme.shadow.default};
-  `,
-  lightRed: (theme: DefaultTheme) => css`
-    background: ${theme.colors.lightRed};
-    color: ${theme.colors.black};
-    box-shadow: ${theme.shadow.default};
+  error: (theme: DefaultTheme) => css`
+    background: ${theme.colors.error.main};
+    color: ${theme.colors.text.primary};
   `,
 };
 
@@ -47,6 +37,7 @@ export const Wrapper = styled.span<WrapperProps>`
     line-height: 1.6rem;
     text-align: center;
     border-radius: 10rem;
+    box-shadow: ${theme.shadows.NotFocus};
 
     ${wrapperModifiers[styledType](theme)}
   `}

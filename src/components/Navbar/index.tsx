@@ -1,6 +1,16 @@
+import { ReactNode } from "react";
+
+import { DefaultTheme } from "styled-components";
 import { Box } from "../Box";
 
-const Navbar = () => {
+type NavbarProps = {
+  children?: string | ReactNode;
+  color?: keyof DefaultTheme["colors"];
+  position?: "absolute" | "fixed" | "relative" | "static" | "sticky";
+  sx?: Array<Function | Object | boolean> | Function | Object;
+};
+
+const Navbar = ({ children, color, position, sx }: NavbarProps) => {
   return (
     <Box>teste</Box>
     // <AppBar position="static">
