@@ -18,6 +18,13 @@ const meta: Meta<typeof Button> = {
     labelColor: {
       type: "string",
     },
+    variant: {
+      control: { type: "radio" },
+      option: ["contained", "outlined", "normal"],
+    },
+    fullWidth: {
+      type: "boolean",
+    },
   },
 };
 
@@ -28,5 +35,6 @@ export const Default: Story = {
   args: {
     children: "My Button",
     size: "medium",
+    variant: "contained",
   },
 };

@@ -1,13 +1,6 @@
-import {
-  ButtonHTMLAttributes,
-  ForwardRefRenderFunction,
-  ReactNode,
-  forwardRef,
-} from "react";
+import { ReactNode } from "react";
 import { DefaultTheme } from "styled-components";
 import * as S from "./styles";
-
-type ButtonTypes = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type ButtonProps = {
   children?: string | ReactNode;
@@ -17,33 +10,29 @@ export type ButtonProps = {
   disabled?: boolean;
   icon?: string | ReactNode;
   fullWidth?: boolean;
-  variant?: "contained" | "outlined" | "text";
+  variant?: "contained" | "outlined" | "normal";
   type?: "button" | "submit" | "reset";
   hasIcon?: boolean;
-} & ButtonTypes;
+};
 
-const Button: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
-  {
-    children,
-    hasIcon,
-    color = "primaryMain",
-    labelColor = "white",
-    disabled = false,
-    fullWidth = false,
-    icon,
-    size = "medium",
-    variant = "contained",
-    type = "button",
-    ...props
-  },
-  ref,
-) => (
+const Button = ({
+  children,
+  hasIcon,
+  color = "primaryMain",
+  labelColor = "white",
+  disabled = false,
+  fullWidth = false,
+  icon,
+  size = "medium",
+  variant = "contained",
+  type = "button",
+  ...props
+}: ButtonProps) => (
   <S.Wrapper
     type={type}
     color={color}
     labelColor={labelColor}
     size={size}
-    ref={ref}
     disabled={disabled}
     fullWidth={fullWidth}
     variant={variant}
@@ -55,4 +44,4 @@ const Button: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   </S.Wrapper>
 );
 
-export default forwardRef(Button);
+export default Button;
