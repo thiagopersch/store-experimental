@@ -1,8 +1,10 @@
 export default {
   colors: {
+    transparent: "transparent",
     white: "#FAFAFA",
     black: "#1B1C1D",
     disabled: "#A4A49F",
+    gray: "#A29C9B",
     primaryMain: "#6314A8",
     primaryDark: "#450E75",
     primaryLight: "#8243B9",
