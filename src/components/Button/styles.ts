@@ -15,14 +15,17 @@ const buttonModifications = {
   small: (theme: DefaultTheme) => css`
     height: 3rem;
     font-size: ${theme.font.sizes.small};
+    padding: ${theme.spacings.xxsmall};
   `,
   medium: (theme: DefaultTheme) => css`
     height: 4rem;
     font-size: ${theme.font.sizes.small};
+    padding: ${theme.spacings.xsmall};
   `,
   large: (theme: DefaultTheme) => css`
     height: 5rem;
     font-size: ${theme.font.sizes.small};
+    padding: ${theme.spacings.small};
   `,
   fullWidth: () => css`
     width: 100%;
@@ -46,6 +49,10 @@ const buttonModifications = {
   contained: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.primaryMain};
     color: ${theme.colors.white};
+
+    &:hover {
+      background-color: ${darken(0.15, theme.colors.primaryMain)};
+    }
   `,
   outlined: (theme: DefaultTheme) => css`
     background: ${theme.colors.white};
@@ -58,13 +65,15 @@ const buttonModifications = {
       box-shadow: ${theme.shadows.NotFocus};
     }
   `,
-  normal: (theme: DefaultTheme) => css`
+  text: (theme: DefaultTheme) => css`
     background-color: transparent;
     color: ${theme.colors.primaryMain};
     font-weight: ${theme.font.weight.bold};
+    box-shadow: none;
 
     &:hover {
-      background-color: ${darken(0.1, theme.colors.white)};
+      background-color: ${darken(0.15, theme.colors.white)};
+      box-shadow: none;
     }
   `,
 };
@@ -86,9 +95,10 @@ export const Wrapper = styled.button<WrapperProps>`
 		background-color: ${theme.colors[color]}};
 		color: ${theme.colors[labelColor]};
 		width: auto;
+    white-space: nowrap;
+    overflow: hidden;
 		border: 0;
 		border-radius: 0.4rem;
-    padding: ${theme.spacings.small};
 		font-family: ${theme.font.family.primary};
 		font-style: ${theme.font.style.normal};
 		font-weight: ${theme.font.weight.medium};
@@ -100,11 +110,11 @@ export const Wrapper = styled.button<WrapperProps>`
 		cursor: pointer;
 		box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 0.5px 2px 0px;
 		transition: ${theme.transition.fast};
+    word-wrap: break-word;
 
 		&:hover {
 			transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0s, border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 			box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 2px -3px, rgba(0, 0, 0, 0.14) 0px 3px 3px 0px, rgba(0, 0, 0, 0.12) 0px 2px 7px 0px;
-			background-color: ${darken(0.1, theme.colors[color])};
 		}
 
     ${media.lessThan("medium")`width: 100%`} 

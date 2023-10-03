@@ -10,8 +10,7 @@ export type ButtonProps = {
   disabled?: boolean;
   icon?: string | ReactNode;
   fullWidth?: boolean;
-  variant?: "contained" | "outlined" | "normal";
-  type?: "button" | "submit" | "reset";
+  variant?: "contained" | "outlined" | "text";
   hasIcon?: boolean;
 };
 
@@ -25,11 +24,9 @@ const Button = ({
   icon,
   size = "medium",
   variant = "contained",
-  type = "button",
   ...props
 }: ButtonProps) => (
   <S.Wrapper
-    type={type}
     color={color}
     labelColor={labelColor}
     size={size}

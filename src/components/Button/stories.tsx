@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { Plus } from "@styled-icons/feather";
 import Button from ".";
 
 const meta: Meta<typeof Button> = {
@@ -20,7 +21,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: { type: "radio" },
-      option: ["contained", "outlined", "normal"],
+      option: ["contained", "outlined", "text"],
     },
     fullWidth: {
       type: "boolean",
@@ -36,5 +37,14 @@ export const Default: Story = {
     children: "My Button",
     size: "medium",
     variant: "contained",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: "My Button",
+    size: "medium",
+    variant: "contained",
+    icon: <Plus />,
   },
 };
