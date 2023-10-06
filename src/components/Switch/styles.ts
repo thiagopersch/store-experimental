@@ -1,12 +1,14 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
+  ${({ theme }) => css`
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+  `}
 `;
 
 export const Switch = styled.input`
@@ -32,6 +34,10 @@ export const Switch = styled.input`
         transition: ${theme.transition.fast};
       }
     }
+
+    &:hover {
+      box-shadow: ${theme.shadows.NotFocus};
+    }
   `}
 `;
 
@@ -54,7 +60,6 @@ export const Toggle = styled.label`
       height: 1.8rem;
       margin: 0.1rem;
       background: ${theme.colors.white};
-      box-shadow: ${theme.shadows.default};
       transition: ${theme.transition.fast};
     }
   `}
