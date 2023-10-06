@@ -18,10 +18,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     position: relative;
     display: flex;
-<<<<<<< HEAD
     flex-direction: row;
-=======
->>>>>>> 7310c7ddb74d764ccd9c9cc9ebf586b820b1528a
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
@@ -51,14 +48,10 @@ export const Switch = styled.input<WrapperProps>`
         transition: ${theme.transition.fast};
       }
     }
-<<<<<<< HEAD
 
     &:hover {
       box-shadow: ${theme.shadows.NotFocus};
     }
-=======
-    ${disabled && switchModifications.disabled()};
->>>>>>> 7310c7ddb74d764ccd9c9cc9ebf586b820b1528a
   `}
 `;
 
