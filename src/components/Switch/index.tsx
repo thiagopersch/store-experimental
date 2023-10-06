@@ -10,18 +10,15 @@ import { DefaultTheme } from "styled-components";
 
 import * as S from "./styles";
 
-type InputHtmlProps = InputHTMLAttributes<HTMLInputElement>;
-
-export type SwitchProps = InputHtmlProps & {
-  label?: string;
-  labelFor?: string;
+export type SwitchProps = InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+  labelFor: string;
   isChecked?: boolean;
   color?: keyof DefaultTheme["colors"];
   disabled?: boolean;
   onCheck?: (status: boolean) => void;
-  required: boolean;
-  size?: "small" | "medium" | "large";
-  value?: string | ReadonlyArray<string> | number | boolean;
+  required?: boolean;
+  value?: string | ReadonlyArray<string> | number | undefined;
 };
 
 const Switch: React.ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (
@@ -30,10 +27,9 @@ const Switch: React.ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (
     labelFor,
     isChecked,
     color,
-    disabled,
+    disabled = false,
     onCheck,
-    required,
-    size,
+    required = false,
     value,
     ...props
   },
@@ -50,21 +46,23 @@ const Switch: React.ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (
   }, [checked]);
 
   return (
-    <div>
-      <S.Wrapper onClick={() => setChecked(!checked)}>
-        <S.Switch
-          id={labelFor}
-          type="checkbox"
-          value={value}
-          checked={checked}
-          disabled={disabled}
-          ref={mergeRefs([fieldRef, ref])}
-          {...props}
-        />
-        <S.Toggle htmlFor={labelFor} />
-        <S.Label htmlFor={labelFor}>{label}</S.Label>
-      </S.Wrapper>
-    </div>
+    <S.Wrapper onClick={() => setChecked(!checked)}>
+      <S.Switch
+        id={labelFor}
+        type="checkbox"
+        value={value}
+        checked={checked}
+        required={required}
+        disabled={disabled}
+        ref={mergeRefs([fieldRef, ref])}
+        {...props}
+      />
+      <S.Toggle htmlFor={labelFor} />
+      <S.Label htmlFor={labelFor}>
+        {label}
+        {required && <S.Asterisk>&nbsp;*</S.Asterisk>}
+      </S.Label>
+    </S.Wrapper>
   );
 };
 

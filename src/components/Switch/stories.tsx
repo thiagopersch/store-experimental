@@ -13,8 +13,9 @@ const meta: Meta<typeof Switch> = {
     disabled: {
       type: "boolean",
     },
-    required: { type: "boolean" },
-    size: { control: { type: "radio" }, options: ["small", "medium", "large"] },
+    required: {
+      type: "boolean",
+    },
   },
 };
 
@@ -24,5 +25,12 @@ type Story = StoryObj<typeof Switch>;
 export const Default: Story = {
   args: {
     label: "My Switch",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    label: "Disabled",
+    disabled: true,
   },
 };
