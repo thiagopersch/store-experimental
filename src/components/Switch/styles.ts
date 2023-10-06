@@ -1,18 +1,35 @@
 import styled, { css } from "styled-components";
+import { SwitchProps } from ".";
+
+export type WrapperProps = {
+  required?: boolean;
+} & Pick<SwitchProps, "disabled" | "color">;
+
+const switchModifications = {
+  disabled: () => css`
+    &:disabled {
+      cursor: not-allowed;
+      filter: saturate(30%);
+    }
+  `,
+};
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     position: relative;
     display: flex;
+<<<<<<< HEAD
     flex-direction: row;
+=======
+>>>>>>> 7310c7ddb74d764ccd9c9cc9ebf586b820b1528a
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
   `}
 `;
 
-export const Switch = styled.input`
-  ${({ theme }) => css`
+export const Switch = styled.input<WrapperProps>`
+  ${({ theme, disabled, color = "primaryMain" }) => css`
     opacity: 0;
     z-index: 1;
     border-radius: 1.5rem;
@@ -21,7 +38,7 @@ export const Switch = styled.input`
     cursor: pointer;
 
     &:checked + ${Toggle} {
-      background: ${theme.colors.primaryMain};
+      background: ${theme.colors[color]};
       transition: ${theme.transition.fast};
 
       &::after {
@@ -34,22 +51,26 @@ export const Switch = styled.input`
         transition: ${theme.transition.fast};
       }
     }
+<<<<<<< HEAD
 
     &:hover {
       box-shadow: ${theme.shadows.NotFocus};
     }
+=======
+    ${disabled && switchModifications.disabled()};
+>>>>>>> 7310c7ddb74d764ccd9c9cc9ebf586b820b1528a
   `}
 `;
 
-export const Toggle = styled.label`
-  ${({ theme }) => css`
+export const Toggle = styled.label<WrapperProps>`
+  ${({ theme, disabled }) => css`
     position: absolute;
     top: 0;
     left: 0;
     width: 5rem;
     height: 2rem;
     border-radius: 1.5rem;
-    background: ${theme.colors.gray};
+    background: ${theme.colors.disabled};
     cursor: pointer;
 
     &::after {
@@ -62,16 +83,25 @@ export const Toggle = styled.label`
       background: ${theme.colors.white};
       transition: ${theme.transition.fast};
     }
+    ${disabled && switchModifications.disabled()};
   `}
 `;
 
-export const Label = styled.label`
-  ${({ theme }) => css`
+export const Label = styled.label<WrapperProps>`
+  ${({ theme, disabled, color = "primaryMain" }) => css`
     cursor: pointer;
     font-family: ${theme.font.family.primary};
     font-weight: ${theme.font.weight.normal};
     font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.primaryMain};
+    color: ${theme.colors[color]};
     padding-left: ${theme.spacings.xsmall};
+
+    ${disabled && switchModifications.disabled()};
+  `}
+`;
+
+export const Asterisk = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.colors.errorMain};
   `}
 `;
