@@ -63,7 +63,11 @@ const SignIn = () => {
                   Não tem cadastro?
                 </Typography>
                 <Link href="/sign-out" passHref>
-                  <Typography component="div" color="primary">
+                  <Typography
+                    component="div"
+                    color="primary"
+                    sx={{ textDecoration: "none" }}
+                  >
                     cadastre-se
                   </Typography>
                 </Link>

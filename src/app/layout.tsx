@@ -8,7 +8,7 @@ import ThemeContextProvider from "./theme-provider";
 
 const poppins = Poppins({
   style: "normal",
-  weight: "400",
+  weight: "500",
   preload: true,
   subsets: ["latin"],
 });
@@ -25,9 +25,9 @@ export default function RootLayout({ children }: ThemeProviderProps) {
   return (
     <html lang="pt-br">
       <body className={poppins.className}>
-        <ThemeContextProvider>
-          <Suspense fallback={<LoadingComponent />}>{children}</Suspense>
-        </ThemeContextProvider>
+        <Suspense fallback={<LoadingComponent />}>
+          <ThemeContextProvider>{children}</ThemeContextProvider>
+        </Suspense>
       </body>
     </html>
   );

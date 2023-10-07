@@ -87,7 +87,7 @@ export const CreateInputsSignOut = () => {
           error={!!errors.phone?.message}
           helperText={errors.phone?.message}
         />
-        <FormLabel id="sex" filled error={!!errors.sex?.message}>
+        <FormLabel id="sex" filled>
           Sexo
         </FormLabel>
         <RadioGroup

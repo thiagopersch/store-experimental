@@ -44,7 +44,7 @@
     "react-dom": "18.2.0",
     "react-epic-spinners": "^0.5.0",
     "react-hook-form": "^7.46.2",
-    "react-input-mask": "^3.0.0-alpha.2",
+    "react-input-mask": "^2.0.4",
     "react-merge-refs": "^2.0.2",
     "react-query": "^3.39.3",
     "react-scripts": "^5.0.1",

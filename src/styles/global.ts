@@ -5,7 +5,7 @@
  *
  */
 
-import {
+/* import {
   DefaultTheme,
   GlobalStyleComponent,
   createGlobalStyle,
@@ -16,10 +16,7 @@ type GlobalStyleProps = {
   theme?: DefaultTheme;
 };
 
-const GlobalStyles: GlobalStyleComponent<
-  GlobalStyleProps,
-  DefaultTheme | undefined
-> = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   * {
     margin:0;
     padding:0;
@@ -54,3 +51,4 @@ const GlobalStyles: GlobalStyleComponent<
   }
 `;
 export default GlobalStyles;
+*/

@@ -1,130 +1,50 @@
-export default {
-  colors: {
-    transparent: "transparent",
-    white: "#FAFAFA",
-    black: "#1B1C1D",
-    disabled: "#A4A49F",
-    gray: "#A29C9B",
-    primaryMain: "#6314A8",
-    primaryDark: "#450E75",
-    primaryLight: "#8243B9",
-    secondaryMain: "#D960AB",
-    secondaryLight: "#E07FBB",
-    secondaryDark: "#974377",
-    errorMain: "#F0758D",
-    errorLight: "#F390A3",
-    errorDark: "#A85162",
-    warningMain: "#FFB946",
-    warningLight: "#FFC76B",
-    warningDark: "#B28131",
-    infoMain: "#B0E0E6",
-    infoLight: "#BFE6EB",
-    infoDark: "#7B9CA1",
-    successMain: "#4caf50",
-    successLight: "#81c784",
-    successDark: "#388e3c",
-  },
-  font: {
-    family: {
-      primary: "'Poppins', sans-serif",
+import { createTheme } from "@mui/material";
+
+export const theme = createTheme({
+  palette: {
+    mode: "light",
+    common: {
+      white: "#FAFAFA",
+      black: "#1B1C1D",
     },
-    weight: {
-      light: 300,
-      normal: 400,
-      medium: 500,
-      bold: 600,
-      mediumBold: 700,
-      black: 800,
-      extraBlack: 900,
+    background: {
+      paper: "#fff",
+      default: "#fff",
     },
-    sizes: {
-      xxsmall: "1rem",
-      xsmall: "1.2rem",
-      small: "1.6rem",
-      medium: "2.4rem",
-      large: "3.2rem",
-      xlarge: "4.0rem",
-      xxlarge: "4.8rem",
-      huge: "5.6rem",
-      xhuge: "6.4rem",
+    primary: {
+      light: "#8243B9",
+      main: "#6314A8",
+      dark: "#450E75",
     },
-    style: {
-      normal: "normal",
-      italic: "italic",
-      oblique: "oblique",
+    secondary: {
+      light: "#E07FBB",
+      main: "#D960AB",
+      dark: "#974377",
+    },
+    error: {
+      light: "#F390A3",
+      main: "#F0758D",
+      dark: "#A85162",
+    },
+    warning: {
+      light: "#FFC76B",
+      main: "#FFB946",
+      dark: "#B28131",
+    },
+    info: {
+      light: "#BFE6EB",
+      main: "#B0E0E6",
+      dark: "#7B9CA1",
+    },
+    success: {
+      light: "#81c784",
+      main: "#4caf50",
+      dark: "#388e3c",
+    },
+    text: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.6)",
+      disabled: "rgba(0, 0, 0, 0.38)",
     },
   },
-  breakpoints: {
-    medium: '"(max-width: 768px)"',
-  },
-  transition: {
-    fast: "all 0.3s ease-in-out;",
-    normal: "all 1s ease-in-out;",
-    slow: "all 2s ease-in-out;",
-  },
-  layers: {
-    base: 10,
-    menu: 20,
-    cardOverlay: 30,
-    card: 40,
-    overlay: 50,
-    modal: 60,
-    alwaysOnTop: 70,
-  },
-  spacings: {
-    none: "0rem",
-    xxsmall: "0.8rem",
-    xsmall: "1.8rem",
-    small: "2.4rem",
-    medium: "3.2rem",
-    large: "4.0rem",
-    xlarge: "4.8rem",
-    xxlarge: "5.6rem",
-    huge: "6.2rem",
-    xhuge: "6.4rem",
-  },
-  layout: {
-    display: {
-      block: "block",
-      inline: "inline",
-      flex: "flex",
-    },
-    flexDirection: {
-      row: "row",
-      column: "column",
-      rowReverse: "row-reverse",
-      columnReverse: "column-reverse",
-    },
-    flexWrap: {
-      wrap: "wrap",
-      nowrap: "nowrap",
-      wrapReverse: "wrap-reverse",
-    },
-    justifyContent: {
-      start: "flex-start",
-      end: "flex-end",
-      center: "center",
-      spaceBetween: "space-between",
-      spaceAround: "space-around",
-      spaceEvenly: "space-evenly",
-    },
-    alignItems: {
-      start: "flex-start",
-      end: "flex-end",
-      center: "center",
-      baseline: "baseline",
-      stretch: "stretch",
-      alignContent: {
-        start: "flex-start",
-        end: "flex-end",
-        center: "center",
-        spaceBetween: "space-between",
-        spaceAround: "space-around",
-      },
-    },
-  },
-  shadows: {
-    default: "0.1rem 0.1rem 0.5rem 0.1rem rgba(0,0,0,0.5)",
-    NotFocus: "0.1rem 0.1rem 0.3rem 0.1rem rgba(0,0,0,0.3)",
-  },
-} as const;
+});
