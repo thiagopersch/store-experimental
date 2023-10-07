@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     position: relative;
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
@@ -47,7 +48,10 @@ export const Switch = styled.input<WrapperProps>`
         transition: ${theme.transition.fast};
       }
     }
-    ${disabled && switchModifications.disabled()};
+
+    &:hover {
+      box-shadow: ${theme.shadows.NotFocus};
+    }
   `}
 `;
 
@@ -70,7 +74,6 @@ export const Toggle = styled.label<WrapperProps>`
       height: 1.8rem;
       margin: 0.1rem;
       background: ${theme.colors.white};
-      box-shadow: ${theme.shadows.default};
       transition: ${theme.transition.fast};
     }
     ${disabled && switchModifications.disabled()};
