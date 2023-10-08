@@ -1,4 +1,4 @@
-import { darken } from "polished";
+import { darken, setLightness } from "polished";
 import styled, { DefaultTheme, css } from "styled-components";
 import media from "styled-media-query";
 
@@ -56,13 +56,13 @@ const buttonModifications = {
   `,
   outlined: (theme: DefaultTheme) => css`
     background: ${theme.colors.white};
-    border: 0.2rem solid ${theme.colors.primaryMain};
+    border: 0.15rem solid ${theme.colors.primaryMain};
     color: ${theme.colors.primaryMain};
     font-weight: ${theme.fonts.weight.bold};
 
     &:hover {
-      background: ${darken(0.1, theme.colors.white)};
-      box-shadow: ${theme.shadows.default};
+      background-color: ${setLightness(0.7, theme.colors.primaryMain)};
+      color: ${theme.colors.primaryDark};
     }
   `,
   text: (theme: DefaultTheme) => css`
@@ -72,7 +72,8 @@ const buttonModifications = {
     box-shadow: none;
 
     &:hover {
-      background-color: ${darken(0.15, theme.colors.white)};
+      background-color: ${setLightness(0.7, theme.colors.primaryMain)};
+      color: ${theme.colors.primaryDark};
       box-shadow: none;
     }
   `,
@@ -110,7 +111,6 @@ export const Wrapper = styled.button<WrapperProps>`
     cursor: pointer;
     box-shadow: ${theme.shadows.default};
     transition: ${theme.transitions.fast};
-    word-wrap: break-word;
 
     &:hover {
       transition: ${theme.transitions.hover};

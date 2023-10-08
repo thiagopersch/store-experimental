@@ -1,22 +1,11 @@
-import styled, { DefaultTheme, css } from "styled-components";
+import styled, { css } from "styled-components";
 import { SwitchProps } from ".";
 
 export type WrapperProps = {
   required?: boolean;
-  hasIcon?: boolean;
-} & Pick<SwitchProps, "disabled" | "color" | "icon">;
+} & Pick<SwitchProps, "disabled" | "color">;
 
 const switchModifications = {
-  withIcon: (theme: DefaultTheme) => css`
-    svg {
-      width: 2rem;
-      stroke-width: 2;
-
-      & + span {
-        margin-left: ${theme.spacings.xxsmall};
-      }
-    }
-  `,
   disabled: () => css`
     &:disabled {
       cursor: not-allowed;
@@ -37,7 +26,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Switch = styled.input<WrapperProps>`
-  ${({ theme, color = "primaryMain", hasIcon }) => css`
+  ${({ theme, color = "primaryMain" }) => css`
     opacity: 0;
     z-index: 1;
     border-radius: 1.5rem;
@@ -63,8 +52,6 @@ export const Switch = styled.input<WrapperProps>`
         transition: ${theme.transitions.fast};
       }
     }
-
-    ${!!hasIcon && switchModifications.withIcon(theme)}
   `}
 `;
 

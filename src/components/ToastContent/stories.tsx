@@ -1,8 +1,8 @@
-import { StoryObj, Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import ToastContent from ".";
 
 const meta: Meta<typeof ToastContent> = {
-  title: "ToastContent",
+  title: "Feedback/ToastContent",
   component: ToastContent,
   args: {
     children: "ToastContent",

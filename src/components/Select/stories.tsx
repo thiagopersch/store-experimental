@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Select from ".";
 
 const meta: Meta<typeof Select> = {
-  title: "Select",
+  title: "Inputs/Select",
   component: Select,
   argTypes: {
     label: { type: "string" },

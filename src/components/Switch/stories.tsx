@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Switch from ".";
 
 const meta: Meta<typeof Switch> = {
-  title: "Switch",
+  title: "Inputs/Switch",
   component: Switch,
   argTypes: {
     label: { type: "string" },

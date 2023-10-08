@@ -3,7 +3,7 @@ import { Plus } from "@styled-icons/feather";
 import Button from ".";
 
 const meta: Meta<typeof Button> = {
-  title: "Button",
+  title: "Form/Button",
   component: Button,
   argTypes: {
     children: {
