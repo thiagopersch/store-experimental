@@ -55,7 +55,7 @@ export default function Base({ children }: BaseProps) {
               />
             </Search>
             <Link href="/sign-in">
-              <Button variant="contained" color="inherit">
+              <Button variant="contained" color="success">
                 Login
               </Button>
             </Link>

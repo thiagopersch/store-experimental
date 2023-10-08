@@ -1,12 +1,11 @@
 "use client";
 
-import { Container } from "@mui/material";
 import { OrbitSpinner } from "react-epic-spinners";
+import { Box } from "../Box";
 
 const LoadingComponent = () => {
   return (
-    <Container
-      maxWidth="sm"
+    <Box
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -17,7 +16,7 @@ const LoadingComponent = () => {
       }}
     >
       <OrbitSpinner color="#6314A8" animationduration={5000} size={150} />
-    </Container>
+    </Box>
   );
 };
 

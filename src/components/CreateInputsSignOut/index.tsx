@@ -3,26 +3,32 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import TextField from "@mui/material/TextField";
 import { ChangeEvent, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-
-import { z } from "zod";
 import { CreateAccountSchema } from "./schema";
 
-type CreateAccountSchemaProps = z.infer<typeof CreateAccountSchema>;
+type CreateInputsSignOutProps = {
+  name: string;
+  birth_date: string;
+  cpf: string;
+  phone: string;
+  sex: string;
+};
 
-export const CreateInputsSignOut = () => {
+export const CreateInputsSignOut = ({
+  birth_date,
+  cpf,
+  name,
+  phone,
+  sex,
+}: CreateInputsSignOutProps) => {
   const [value, setValue] = useState("male");
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<CreateAccountSchemaProps>({
+  } = useForm<CreateInputsSignOutProps>({
     resolver: zodResolver(CreateAccountSchema),
     mode: "all",
     criteriaMode: "all",
@@ -32,7 +38,7 @@ export const CreateInputsSignOut = () => {
     setValue((event.target as HTMLInputElement).value);
   };
 
-  const onSubmit: SubmitHandler<CreateAccountSchemaProps> = (data) => {
+  const onSubmit: SubmitHandler<CreateInputsSignOutProps> = (data) => {
     console.log({ data });
   };
 
@@ -87,27 +93,26 @@ export const CreateInputsSignOut = () => {
           error={!!errors.phone?.message}
           helperText={errors.phone?.message}
         />
-        <FormLabel id="sex" filled>
-          Sexo
-        </FormLabel>
-        <RadioGroup
-          aria-labelledby="sex"
-          required
-          {...register("sex")}
-          value={value}
-          onChange={handleChange}
-        >
-          <FormControlLabel
-            value="male"
-            control={<Radio />}
-            label="Masculino"
-          />
-          <FormControlLabel
-            value="female"
-            control={<Radio />}
-            label="Feminino"
-          />
-        </RadioGroup>
+        {/* <FormControl required>
+          <FormLabel id="sex">Sexo</FormLabel>
+          <RadioGroup
+            aria-labelledby="sex"
+            {...register("sex")}
+            value={value}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="male"
+              control={<Radio />}
+              label="Masculino"
+            />
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Feminino"
+            />
+          </RadioGroup>
+        </FormControl> */}
         <Box
           display="flex"
           flexDirection="row"

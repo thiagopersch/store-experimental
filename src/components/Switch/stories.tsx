@@ -5,16 +5,17 @@ const meta: Meta<typeof Switch> = {
   title: "Switch",
   component: Switch,
   argTypes: {
-    onCheck: {
-      action: "checked",
-    },
     label: { type: "string" },
     color: { type: "string" },
+    isChecked: { type: "boolean" },
     disabled: {
       type: "boolean",
     },
     required: {
       type: "boolean",
+    },
+    onCheck: {
+      action: "checked",
     },
   },
 };

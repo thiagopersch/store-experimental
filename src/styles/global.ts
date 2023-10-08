@@ -5,12 +5,7 @@
  *
  */
 
-/* import {
-  DefaultTheme,
-  GlobalStyleComponent,
-  createGlobalStyle,
-  css,
-} from "styled-components";
+import { DefaultTheme, createGlobalStyle, css } from "styled-components";
 
 type GlobalStyleProps = {
   theme?: DefaultTheme;
@@ -35,8 +30,8 @@ const GlobalStyles = createGlobalStyle`
   body {
     ${({ theme }) => css`
       background-color: ${theme.colors.white};
-      font-size: ${theme.font.sizes.small};
-      font-family: ${theme.font.family.primary};
+      font-size: ${theme.fonts.sizes.small};
+      font-family: ${theme.fonts.family.primary};
       color: ${theme.colors.black};
       outline: none;
     `}
@@ -51,4 +46,3 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 export default GlobalStyles;
-*/

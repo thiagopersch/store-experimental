@@ -97,13 +97,13 @@ export const OptionsList = styled.div<OptionsListProps>`
     background: #fdfdfd;
     padding: 1rem 0.5rem;
     padding-top: 0;
-    font-size: ${theme.font.sizes.medium};
+    font-size: ${theme.fonts.sizes.medium};
     z-index: ${theme.layers.base};
     box-shadow: 0rem 0rem 0.4rem rgba(51, 73, 77, 0.3);
     max-height: 0;
     visibility: hidden;
     opacity: 0;
-    font-size: ${theme.font.sizes.small};
+    font-size: ${theme.fonts.sizes.small};
 
     transform: ${orientation === "top"
       ? "translateY(0.2rem)"
@@ -156,7 +156,7 @@ export const GroupContainer = styled.div<GroupContainerProps>`
     ${hasTitle &&
     css`
       margin-top: 1.5rem;
-      border-top: 0.1rem solid ${theme.colors.gray};
+      border-top: 0.1rem solid ${theme.colors.grey};
 
       > span {
         position: absolute;
@@ -164,7 +164,7 @@ export const GroupContainer = styled.div<GroupContainerProps>`
         padding: 0 0.5rem;
         transform: translateY(calc(-50% - 0.1rem));
         background: ${theme.colors.white};
-        color: ${theme.colors.gray};
+        color: ${theme.colors.grey};
       }
     `}
   `}

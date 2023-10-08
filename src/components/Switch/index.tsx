@@ -1,5 +1,6 @@
 import {
   InputHTMLAttributes,
+  ReactNode,
   forwardRef,
   useEffect,
   useRef,
@@ -13,6 +14,8 @@ import * as S from "./styles";
 export type SwitchProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   labelFor: string;
+  icon?: string | ReactNode;
+  hasIcon?: boolean;
   isChecked?: boolean;
   color?: keyof DefaultTheme["colors"];
   disabled?: boolean;
@@ -25,6 +28,8 @@ const Switch: React.ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (
   {
     label,
     labelFor,
+    icon,
+    hasIcon,
     isChecked,
     color,
     disabled = false,
@@ -54,10 +59,11 @@ const Switch: React.ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (
         checked={checked}
         required={required}
         disabled={disabled}
+        hasIcon={!!icon}
         ref={mergeRefs([fieldRef, ref])}
         {...props}
       />
-      <S.Toggle htmlFor={labelFor} />
+      <S.Toggle htmlFor={labelFor} hasIcon={!!icon} icon={!!icon && icon} />
       <S.Label htmlFor={labelFor}>
         {label}
         {required && <S.Asterisk>&nbsp;*</S.Asterisk>}

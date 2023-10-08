@@ -78,7 +78,7 @@ const labelModifiers = {
       top: 0;
       transform: translateY(-50%);
       left: 0.8rem;
-      font-size: ${theme.font.sizes.xsmall};
+      font-size: ${theme.fonts.sizes.xsmall};
       color: ${disabled ? theme.colors.disabled : theme.colors.primaryMain};
     }
   `,
@@ -117,9 +117,9 @@ export const Label = styled.label<LabelProps>`
       position: absolute;
       left: 1rem;
       background: ${theme.colors.white};
-      font-size: ${theme.font.sizes.small};
+      font-size: ${theme.fonts.sizes.small};
       transition: all 0.15s ease-out;
-      color: ${theme.colors.gray};
+      color: ${theme.colors.grey};
       background-color: ${isDisabled
         ? theme.colors.transparent
         : theme.colors.white};
@@ -186,15 +186,15 @@ const TextArea = (theme: DefaultTheme) => css`
 const inputModifiers = {
   large: (theme: DefaultTheme) => css`
     padding: 0 ${theme.spacings.xsmall};
-    font-size: ${theme.font.sizes.small};
+    font-size: ${theme.fonts.sizes.small};
   `,
   medium: (theme: DefaultTheme) => css`
     padding: 0 ${theme.spacings.xxsmall};
-    font-size: ${theme.font.sizes.small};
+    font-size: ${theme.fonts.sizes.small};
   `,
   small: (theme: DefaultTheme) => css`
     padding: 0 calc(${theme.spacings.xsmall} / 2);
-    font-size: ${theme.font.sizes.xsmall};
+    font-size: ${theme.fonts.sizes.xsmall};
   `,
   disabled: (theme: DefaultTheme) => css`
     color: ${theme.colors.disabled};
@@ -219,9 +219,9 @@ export const Input = styled.input<InputProps>`
     min-width: 100%;
     height: 100%;
     max-height: inherit;
-    font-family: ${theme.font.family.primary};
+    font-family: ${theme.fonts.family.primary};
     color: ${theme.colors.black};
-    font-size: ${theme.font.sizes.xxsmall};
+    font-size: ${theme.fonts.sizes.xxsmall};
 
     ${inputModifiers[inputSize](theme)}
     ${!!disabled && inputModifiers.disabled(theme)}
@@ -230,7 +230,7 @@ export const Input = styled.input<InputProps>`
 
 export const ErrorMessage = styled.span`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};
+    font-size: ${theme.fonts.sizes.xsmall};
     color: ${theme.colors.errorMain};
   `}
 `;
