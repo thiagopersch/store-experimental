@@ -32,16 +32,28 @@ const meta: Meta<typeof Fab> = {
       option: ["circular", "extended"],
       description: "Variant of the component",
     },
+    as: {
+      type: "string",
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Fab>;
 
-export const Default: Story = {
+export const Circular: Story = {
+  args: {
+    size: "large",
+    icon: <Send />,
+    variant: "circular",
+  },
+};
+
+export const Extended: Story = {
   args: {
     children: "My Fab",
     size: "large",
     icon: <Send />,
+    variant: "extended",
   },
 };

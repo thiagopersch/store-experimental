@@ -60,7 +60,7 @@ export const Input = styled.input<InputProps>`
       background-color: ${theme.colors.primaryMain};
 
       &::before {
-        transition: transform 0.5s cubic-bezier(0.3, 0.85, 0.32, 1.2), 
+        transition: transform 0.5s cubic-bezier(0.5, 0.85, 0.5, 0.85), 
           opacity: 0.3s;
         opacity: 1;
         transform: rotate(30deg);

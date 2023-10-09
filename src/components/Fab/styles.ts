@@ -1,18 +1,70 @@
-import styled, { css } from "styled-components";
-import media from "styled-media-query";
+import { darken } from "polished";
+import styled, { DefaultTheme, css } from "styled-components";
 import { FabProps } from ".";
 
-export const Wrapper = styled.div<FabProps>`
+export type WrapperProps = {
+  hasIcon: boolean;
+} & Pick<FabProps, "size" | "color" | "labelColor" | "variant">;
+
+const FabModifiers = {
+  small: (theme: DefaultTheme) => css`
+    height: 3rem;
+    padding: 1rem;
+  `,
+  medium: (theme: DefaultTheme) => css`
+    height: 4rem;
+    padding: 1.2rem;
+  `,
+  large: (theme: DefaultTheme) => css`
+    height: 5rem;
+    padding: 1.4rem;
+  `,
+  withIcon: (theme: DefaultTheme) => css`
+    svg {
+      width: 2.5rem;
+      stroke-width: 2;
+
+      & + span {
+        margin-left: ${theme.spacings.xxsmall};
+      }
+    }
+  `,
+  disabled: () => css`
+    color: #9e9e9e;
+    background-color: #a9a9a9a9;
+
+    &:hover {
+      background-color: ${darken(0.15, "#e9e9e9e9")};
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: saturate(30%);
+    }
+  `,
+  circular: (theme: DefaultTheme) => css`
+    height: 5rem;
+  `,
+  extended: (theme: DefaultTheme) => css`
+    height: 5rem;
+    padding: ${theme.spacings.medium};
+  `,
+};
+
+export const Wrapper = styled.button<WrapperProps>`
   ${({
     theme,
     color = "primaryMain",
     variant,
     size,
+    disabled,
+    hasIcon,
     labelColor = "white",
   }) => css`
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1.2rem;
     width: auto;
     white-space: nowrap;
     border: 0;
@@ -22,10 +74,13 @@ export const Wrapper = styled.div<FabProps>`
     font-family: ${theme.fonts.family.primary};
     font-style: ${theme.fonts.style.normal};
     font-weight: ${theme.fonts.weight.bold};
+    padding: 1.6rem;
     letter-spacing: 0.25rem;
     line-height: 1.6rem;
     text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
+    outline: none;
     cursor: pointer;
     box-shadow: ${theme.shadows.default};
     transition: ${theme.transitions.fast};
@@ -33,8 +88,12 @@ export const Wrapper = styled.div<FabProps>`
     &:hover {
       transition: ${theme.transitions.hover};
       box-shadow: ${theme.shadows.hover};
+      background-color: ${darken(0.15, theme.colors[color])};
     }
 
-    ${variant === "extended" && media.lessThan("medium")`width: 100%`}
+    ${!!variant && FabModifiers[variant](theme)}
+    ${!!size && FabModifiers[size](theme)}
+    ${!!hasIcon && FabModifiers.withIcon(theme)}
+    ${disabled && FabModifiers.disabled()}
   `}
 `;

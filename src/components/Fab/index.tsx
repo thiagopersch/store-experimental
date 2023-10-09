@@ -2,9 +2,7 @@ import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   ElementType,
-  ForwardRefRenderFunction,
   ReactNode,
-  forwardRef,
 } from "react";
 import { DefaultTheme } from "styled-components";
 import * as S from "./styles";
@@ -16,6 +14,7 @@ type FabTypes =
 export type FabProps = {
   children?: string | ReactNode;
   color?: keyof DefaultTheme["colors"];
+  hasIcon?: boolean;
   icon?: ReactNode;
   as?: ElementType;
   labelColor?: keyof DefaultTheme["colors"];
@@ -24,25 +23,22 @@ export type FabProps = {
   variant?: "circular" | "extended";
 } & FabTypes;
 
-const Fab: ForwardRefRenderFunction<HTMLButtonElement, FabProps> = (
-  {
-    children,
-    as,
-    labelColor,
-    disabled = false,
-    size = "large",
-    color,
-    icon,
-    variant = "circular",
-    ...props
-  },
-  ref,
-) => {
+const Fab = ({
+  children,
+  as,
+  labelColor,
+  disabled = false,
+  size = "large",
+  color,
+  hasIcon,
+  icon,
+  variant = "circular",
+  ...props
+}: FabProps) => {
   return (
     <S.Wrapper
       size={size}
       as={as}
-      ref={ref}
       hasIcon={!!icon}
       color={color}
       labelColor={labelColor}
@@ -56,4 +52,4 @@ const Fab: ForwardRefRenderFunction<HTMLButtonElement, FabProps> = (
   );
 };
 
-export default forwardRef(Fab);
+export default Fab;
