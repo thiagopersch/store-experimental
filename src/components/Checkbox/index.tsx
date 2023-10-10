@@ -2,7 +2,7 @@ import { InputHTMLAttributes, useEffect, useState } from "react";
 import { DefaultTheme } from "styled-components";
 import * as S from "./styles";
 
-type FabTypes = InputHTMLAttributes<HTMLInputElement>;
+type CheckboxTypes = InputHTMLAttributes<HTMLInputElement>;
 
 export type CheckboxProps = {
   children?: string;
@@ -14,7 +14,7 @@ export type CheckboxProps = {
   onCheck?: (status: boolean) => void;
   required?: boolean;
   value?: string | ReadonlyArray<string> | number | boolean;
-} & FabTypes;
+} & CheckboxTypes;
 
 const Checkbox = ({
   children,
