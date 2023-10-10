@@ -21,34 +21,19 @@ export const masks = {
 
     return newValue;
   },
-  "school-report-field": (value: string) => {
-    if (String(value) === "100") {
-      return "1.0";
-    }
-
-    const newValue = value
-      .replace(/\D/g, "")
-      .replace(/(^10)(0)/, "$1.$2")
-      .replace(/(^10\.0)([1-9])/, "$1")
-      .replace(/(^(?!^10)[0-9])([0-9])/, "$1.$2")
-      .replace(/(^10|[0-9]\.[0-9])(\d+?$)/, "$1");
+  cpf: (value: string) => {
+    const newValue = value.replace(
+      /(\d{3})(\d{3})(\d{3})(\d{2})/,
+      "$1.$2.$3-$4",
+    );
 
     return newValue;
   },
-  "school-report": (value: string) => {
-    const normalizedValue = value.padStart(4, "0");
-
-    const newValue = normalizedValue
-      .replace(/\D/g, "")
-      .replace(/(^10)(0)/, "$1.$2")
-      .replace(/(^10\.0)([1-9])/, "$1")
-      .replace(/(^0)([0-9])/, "$2")
-      .replace(/(^(?!^10)[0-9])([0-9])/, "$1.$2");
-    // .replace(/(^10|[0-9]\.[0-9])(\d+?$)/, '$1');
-
-    if (String(value) === "100") {
-      console.log(value, newValue);
-    }
+  cnpj: (value: string) => {
+    const newValue = value.replace(
+      /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+      "$1.$2.$3/$4-$5",
+    );
 
     return newValue;
   },
