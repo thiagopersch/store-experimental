@@ -34,6 +34,11 @@ const GlobalStyles = createGlobalStyle`
       font-family: ${theme.fonts.family.primary};
       color: ${theme.colors.black};
       outline: none;
+
+      ::selection {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primaryMain};
+      }
     `}
 
     button {
