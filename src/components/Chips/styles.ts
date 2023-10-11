@@ -1,3 +1,4 @@
+import { darken } from "polished";
 import styled, { DefaultTheme, css } from "styled-components";
 import { ChipProps } from ".";
 
@@ -11,18 +12,15 @@ export type ChipPropsPicker = {
 const wrapperProps = {
   small: (theme: DefaultTheme) => css`
     height: 3rem;
-    padding: ${theme.spacings.xxsmall};
-    font-size: ${theme.fonts.sizes.small};
+    padding: 0.7rem 1rem;
   `,
   medium: (theme: DefaultTheme) => css`
     height: 4rem;
     padding: 1.2rem 1.5rem;
-    font-size: ${theme.fonts.sizes.medium};
   `,
   large: (theme: DefaultTheme) => css`
     height: 5rem;
     padding: 1.5rem 2rem;
-    font-size: ${theme.fonts.sizes.large};
   `,
   disabled: (theme: DefaultTheme) => css`
     cursor: not-allowed;
@@ -30,7 +28,7 @@ const wrapperProps = {
     color: ${theme.colors.grey};
   `,
   filled: (theme: DefaultTheme) => css`
-    background-color: rgba(255, 255, 255, 0.16);
+    background-color: ${darken(0.2, theme.colors.white)};
   `,
   outlined: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.white};
@@ -64,6 +62,11 @@ export const Wrapper = styled.div<ChipPropsPicker>`
     background-color: ${theme.colors[backgroundColor]};
     box-shadow: ${theme.shadows.default};
     border-radius: 100rem;
+    transition: ${theme.transitions.fast};
+
+    &:hover {
+      box-shadow: ${theme.shadows.hover};
+    }
 
     ${!!size && wrapperProps[size](theme)};
     ${!!variant && wrapperProps[variant](theme)};
@@ -75,6 +78,7 @@ export const Wrapper = styled.div<ChipPropsPicker>`
 export const Label = styled.span<ChipPropsPicker>`
   ${({ theme, color = "primaryMain" }) => css`
     color: ${theme.colors[color]};
+    font-size: ${theme.fonts.sizes.small};
     font-weight: ${theme.fonts.weight.medium};
     font-style: ${theme.fonts.style.normal};
     text-align: center;
