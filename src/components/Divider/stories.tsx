@@ -4,16 +4,19 @@ import Divider from ".";
 const meta: Meta<typeof Divider> = {
   title: "Data Display/Divider",
   component: Divider,
-  argTypes: {
-    children: { type: "string" },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Divider>;
 
-export const Default: Story = {
+export const Light: Story = {
   args: {
-    children: "My Divider",
+    light: false,
+  },
+};
+
+export const Absolute: Story = {
+  args: {
+    absolute: true,
   },
 };

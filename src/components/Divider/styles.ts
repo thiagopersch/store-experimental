@@ -1,23 +1,20 @@
-import styled, { DefaultTheme, css } from "styled-components";
+import styled, { css } from "styled-components";
 import { DividerProps } from ".";
 
-type wrapperTypes = Pick<
-  DividerProps,
-  "absolute" | "light" | "orientation" | "fullWidth"
->;
+type wrapperTypes = Pick<DividerProps, "absolute" | "light">;
 
 const dividerModifiers = {
-  horizontal: (theme: DefaultTheme) => css`
-    hr {
-      height: 1rem solid ${theme.colors.grey};
-    }
+  absolute: () => css`
+    position: absolute;
   `,
-  vertical: (theme: DefaultTheme) => css``,
-  fullWidth: () => css``,
 };
 
 export const Wrapper = styled.div<wrapperTypes>`
-  ${({ theme, absolute, light, orientation, fullWidth }) => css`
-    ${!!orientation && dividerModifiers[orientation](theme)};
+  ${({ theme, absolute, light }) => css`
+    border: 0.1rem solid ${light ? theme.colors.white : theme.colors.grey};
+    border-radius: 100rem;
+    transition: ${theme.transitions.fast};
+
+    ${absolute && dividerModifiers.absolute()}
   `}
 `;
