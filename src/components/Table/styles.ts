@@ -1,0 +1,29 @@
+import styled, { css } from "styled-components";
+
+type WrapperProps = {
+  columnDivider: boolean;
+};
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ columnDivider, theme }) => css`
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+      border-collapse: separate;
+      width: inherit;
+      border-spacing: 0;
+
+      ${!!columnDivider &&
+      css`
+        > thead > tr > th,
+        > tbody > tr > td {
+          &:not(:last-child) {
+            border-right: 0.1rem solid ${theme.colors.grey};
+          }
+        }
+      `}
+    }
+  `}
+`;
+
+export const TableHeader = styled.thead``;
