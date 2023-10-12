@@ -4,7 +4,7 @@ import Table, { TableProps } from ".";
 import TableColumn from "../TableColumn";
 
 export default {
-  title: "Table",
+  title: "Data Display/Table",
   component: Table,
   argTypes: {
     items: { type: undefined },
