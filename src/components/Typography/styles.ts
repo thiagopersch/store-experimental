@@ -52,7 +52,7 @@ const typographyModifiers = {
 };
 
 export const Wrapper = styled.h1<TypographyPropsPicker>`
-  ${({ theme, color = "primaryMain", size, align, transform }) => css`
+  ${({ theme, color = "primary", size, align, transform }) => css`
     color: ${theme.colors[color]};
     transition: ${theme.transitions.fast};
 

@@ -10,7 +10,7 @@ export const Wrapper = styled.nav<NavbarProps>`
     height: 8rem;
     width: 100%;
     color: ${theme.colors.white};
-    background-color: ${theme.colors.primaryMain};
+    background-color: ${theme.colors.primary};
     padding: ${theme.spacings.xsmall};
   `}
 `;
@@ -19,13 +19,13 @@ export const LogoLink = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    font-family: ${theme.font.family.primary};
-    font-size: ${theme.font.sizes.medium};
+    font-family: ${theme.fonts.family.primary};
+    font-size: ${theme.fonts.sizes.medium};
     height: 100%;
 
     > span {
-      font-weight: ${theme.font.weight.normal};
-      color: ${theme.colors.infoMain};
+      font-weight: ${theme.fonts.weight.normal};
+      color: ${theme.colors.info};
       margin-right: ${theme.spacings.xxsmall};
     }
   `}

@@ -15,7 +15,7 @@ export const Wrapper = styled.tr<WrapperProps>`
 const detailLineModifiers = {
   active: (theme: DefaultTheme) => css`
     > td > div {
-      border-left: 5px solid ${theme.colors.primaryMain};
+      border-left: 5px solid ${theme.colors.primary};
       visibility: visible;
       max-height: 40rem;
     }
@@ -30,7 +30,7 @@ export const DetailLine = styled.tr<DetailLineProps>`
     > td {
       > div {
         border: none;
-        border-color: ${theme.colors.primaryMain};
+        border-color: ${theme.colors.primary};
         visibility: hidden;
         overflow: auto;
         max-height: 0rem;

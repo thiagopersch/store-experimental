@@ -54,7 +54,7 @@ const FabModifiers = {
 export const Wrapper = styled.button<WrapperProps>`
   ${({
     theme,
-    color = "primaryMain",
+    color = "primary",
     variant,
     size,
     disabled,

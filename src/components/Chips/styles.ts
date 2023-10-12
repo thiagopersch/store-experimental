@@ -48,7 +48,7 @@ const wrapperProps = {
 export const Wrapper = styled.div<ChipPropsPicker>`
   ${({
     theme,
-    backgroundColor = "primaryMain",
+    backgroundColor = "primary",
     disabled,
     hasIcon,
     size,
@@ -76,7 +76,7 @@ export const Wrapper = styled.div<ChipPropsPicker>`
 `;
 
 export const Label = styled.span<ChipPropsPicker>`
-  ${({ theme, color = "primaryMain" }) => css`
+  ${({ theme, color = "primary" }) => css`
     color: ${theme.colors[color]};
     font-size: ${theme.fonts.sizes.small};
     font-weight: ${theme.fonts.weight.medium};

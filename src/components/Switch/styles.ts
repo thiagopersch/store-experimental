@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Switch = styled.input<WrapperProps>`
-  ${({ theme, color = "primaryMain" }) => css`
+  ${({ theme, color = "primary" }) => css`
     opacity: 0;
     z-index: 1;
     border-radius: 1.5rem;
@@ -85,7 +85,7 @@ export const Toggle = styled.label<WrapperProps>`
 `;
 
 export const Label = styled.label<WrapperProps>`
-  ${({ theme, disabled, color = "primaryMain" }) => css`
+  ${({ theme, disabled, color = "primary" }) => css`
     cursor: pointer;
     font-family: ${theme.fonts.family.primary};
     font-weight: ${theme.fonts.weight.normal};
@@ -99,6 +99,6 @@ export const Label = styled.label<WrapperProps>`
 
 export const Asterisk = styled.span`
   ${({ theme }) => css`
-    color: ${theme.colors.errorDark};
+    color: ${theme.colors.error};
   `}
 `;

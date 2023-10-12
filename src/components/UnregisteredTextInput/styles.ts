@@ -72,14 +72,14 @@ export const Container = styled.div<ContainerProps>`
 const labelModifiers = {
   inFocusOrValue: (theme: DefaultTheme, disabled: boolean) => css`
     box-shadow: inset 0rem 0rem 0rem 0.2rem
-      ${disabled ? theme.colors.disabled : theme.colors.primaryMain};
+      ${disabled ? theme.colors.disabled : theme.colors.primary};
 
     span {
       top: 0;
       transform: translateY(-50%);
       left: 0.8rem;
       font-size: ${theme.fonts.sizes.xsmall};
-      color: ${disabled ? theme.colors.disabled : theme.colors.primaryMain};
+      color: ${disabled ? theme.colors.disabled : theme.colors.primary};
     }
   `,
   disabled: () => css`
@@ -131,7 +131,7 @@ export const Label = styled.label<LabelProps>`
     ${!!isDisabled && labelModifiers.disabled}
 
     &:hover {
-      box-shadow: inset 0rem 0rem 0rem 0.1rem ${theme.colors.primaryMain};
+      box-shadow: inset 0rem 0rem 0rem 0.1rem ${theme.colors.primary};
     }
 
     &:focus-within {
@@ -231,7 +231,7 @@ export const Input = styled.input<InputProps>`
 export const ErrorMessage = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.fonts.sizes.xsmall};
-    color: ${theme.colors.errorMain};
+    color: ${theme.colors.error};
   `}
 `;
 
@@ -245,7 +245,7 @@ export const IconButton = styled.button.attrs({ type: "button" })`
     height: 95%;
     margin: 0.2rem;
     margin-left: 0;
-    color: ${theme.colors.primaryMain};
+    color: ${theme.colors.primary};
     stroke-width: 2;
   `}
 `;

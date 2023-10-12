@@ -6,23 +6,23 @@ export type WrapperProps = Pick<BadgeProps, "styledType">;
 
 const wrapperModifiers = {
   success: (theme: DefaultTheme) => css`
-    background: ${theme.colors.successDark};
+    background: ${theme.colors.success};
     color: ${theme.colors.black};
   `,
   info: (theme: DefaultTheme) => css`
-    background: ${theme.colors.infoDark};
-    color: ${theme.colors.white};
+    background: ${theme.colors.info};
+    color: ${theme.colors.black};
   `,
   secondary: (theme: DefaultTheme) => css`
-    background: ${theme.colors.secondaryDark};
+    background: ${theme.colors.secondary};
     color: ${theme.colors.white};
   `,
   orange: (theme: DefaultTheme) => css`
-    background: ${theme.colors.warningDark};
+    background: ${theme.colors.warning};
     color: ${theme.colors.white};
   `,
   error: (theme: DefaultTheme) => css`
-    background: ${theme.colors.errorDark};
+    background: ${theme.colors.error};
     color: ${theme.colors.white};
   `,
 };

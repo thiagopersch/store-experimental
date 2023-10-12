@@ -10,7 +10,7 @@ const wrapperModifiers = {
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
   `,
   showingDetail: (theme: DefaultTheme) => css`
-    box-shadow: inset 5px 0px ${theme.colors.primaryMain};
+    box-shadow: inset 5px 0px ${theme.colors.primary};
   `,
   ellipsis: () => css`
     white-space: nowrap;
@@ -75,7 +75,7 @@ export const ExpandButton = styled.button`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    color: ${theme.colors.primaryMain};
+    color: ${theme.colors.primary};
     background: none;
     border: none;
     outline: 0;
@@ -92,7 +92,7 @@ export const ExpandIcon = styled(ChevronDown)<ExpandIconProps>`
   ${({ theme, active }) => css`
     stroke-width: 0.2rem;
     margin-left: 0.5rem;
-    color: ${theme.colors.primaryMain};
+    color: ${theme.colors.primary};
     transition: transform 0.3s ease;
 
     ${!!active &&

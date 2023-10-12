@@ -22,7 +22,7 @@ export const Input = styled.input<InputProps>`
     appearance: none;
     width: 1.8rem;
     height: 1.8rem;
-    border: 0.08rem solid ${theme.colors.primaryMain};
+    border: 0.08rem solid ${theme.colors.primary};
     border-radius: 0.3rem;
     outline: none;
     transition: ${theme.transitions.fast};
@@ -57,7 +57,7 @@ export const Input = styled.input<InputProps>`
     }
 
     &:checked {
-      background-color: ${theme.colors.primaryMain};
+      background-color: ${theme.colors.primary};
 
       &::before {
         transition: transform 0.5s cubic-bezier(0.5, 0.85, 0.5, 0.85), 
@@ -71,7 +71,7 @@ export const Input = styled.input<InputProps>`
 `;
 
 export const Label = styled.label<InputProps>`
-  ${({ theme, labelColor = "primaryMain", disabled }) => css`
+  ${({ theme, labelColor = "primary", disabled }) => css`
     cursor: pointer;
     padding-left: ${theme.spacings.xxsmall};
     color: ${theme.colors[labelColor]};
@@ -94,7 +94,7 @@ export const Label = styled.label<InputProps>`
 
 export const Asterisk = styled.span<InputProps>`
   ${({ theme, disabled }) => css`
-    color: ${theme.colors.errorDark};
+    color: ${theme.colors.error};
 
     ${disabled &&
     css`

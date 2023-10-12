@@ -47,33 +47,33 @@ const buttonModifications = {
     }
   `,
   contained: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.primaryMain};
+    background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
 
     &:hover {
-      background-color: ${darken(0.15, theme.colors.primaryMain)};
+      background-color: ${darken(0.15, theme.colors.primary)};
     }
   `,
   outlined: (theme: DefaultTheme) => css`
     background: ${theme.colors.white};
-    border: 0.15rem solid ${theme.colors.primaryMain};
-    color: ${theme.colors.primaryMain};
+    border: 0.15rem solid ${theme.colors.primary};
+    color: ${theme.colors.primary};
     font-weight: ${theme.fonts.weight.bold};
 
     &:hover {
-      background-color: ${setLightness(0.7, theme.colors.primaryMain)};
-      color: ${theme.colors.primaryDark};
+      background-color: ${setLightness(0.7, theme.colors.primary)};
+      color: ${darken(0.1, theme.colors.primary)};
     }
   `,
   text: (theme: DefaultTheme) => css`
     background-color: transparent;
-    color: ${theme.colors.primaryMain};
+    color: ${theme.colors.primary};
     font-weight: ${theme.fonts.weight.bold};
     box-shadow: none;
 
     &:hover {
-      background-color: ${setLightness(0.7, theme.colors.primaryMain)};
-      color: ${theme.colors.primaryDark};
+      background-color: ${setLightness(0.7, theme.colors.primary)};
+      color: ${darken(0.1, theme.colors.primary)};
       box-shadow: none;
     }
   `,
