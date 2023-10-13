@@ -8,6 +8,8 @@ const meta: Meta<typeof Alert> = {
   argTypes: {
     children: { type: "string" },
     description: { type: "string" },
+    color: { type: "string" },
+    backgroundColor: { type: "string" },
   },
 };
 
@@ -39,5 +41,14 @@ export const DescriptionWithIcon: Story = {
     children: "My Alert",
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis enim, architecto nostrum ab tempore quis sapiente autem itaque voluptas, nulla atque expedita culpa earum quaerat impedit molestias quidem quasi eveniet!`,
     icon: <AlertCircle />,
+  },
+};
+
+export const WithCloseIcon: Story = {
+  args: {
+    children: "My Alert",
+    description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis enim, architecto nostrum ab tempore quis sapiente autem itaque voluptas, nulla atque expedita culpa earum quaerat impedit molestias quidem quasi eveniet!`,
+    icon: <AlertCircle />,
+    closeIcon: true,
   },
 };
