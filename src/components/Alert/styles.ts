@@ -1,4 +1,5 @@
-import { darken } from "polished";
+import theme from "@/styles/theme";
+import { darken, setLightness } from "polished";
 import styled, { DefaultTheme, css } from "styled-components";
 import { AlertProps } from ".";
 
@@ -12,11 +13,13 @@ type WrapperProps = {
   | "dark"
   | "description"
   | "icon"
-  | "variant"
-  | "onClose"
   | "backgroundColor"
   | "iconAnimation"
 >;
+
+type alertModifiersProps = {
+  color: keyof typeof theme.colors;
+};
 
 const alertModifiers = {
   withIcon: (theme: DefaultTheme) => css`
@@ -40,12 +43,11 @@ export const Wrapper = styled.div<WrapperProps>`
     hasIcon,
   }) => css`
     display: ${theme.layout.display.flex};
-    /*justify-content: ${theme.layout.justifyContent.spaceBetween};*/
-    align-items: ${theme.layout.alignItems.center};
     color: ${dark ? darken(0.2, theme.colors[color]) : theme.colors[color]};
     background-color: ${dark
       ? darken(0.2, theme.colors[backgroundColor])
       : theme.colors[backgroundColor]};
+    align-items: ${theme.layout.alignItems.center};
     padding: ${theme.spacings.xsmall};
     transition: ${theme.transitions.fast};
     border-radius: 0.6rem;
@@ -58,26 +60,73 @@ export const Icon = styled.div`
   ${({ theme }) => css`
     display: ${theme.layout.display.flex};
     justify-content: ${theme.layout.justifyContent.center};
-    align-items: ${theme.layout.alignItems.center};
+    align-items: ${theme.layout.alignItems.start};
     margin-right: ${theme.spacings.xsmall};
   `}
 `;
 
-export const TitleDescription = styled.div`
-  ${({ theme }) => css`
-    display: ${theme.layout.display.flex};
-    flex-direction: ${theme.layout.flexDirection.column};
-  `}
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;
 
-export const Title = styled.span`
-  ${({ theme }) => css`
-    padding: ${theme.spacings.xxsmall} 0;
+export const TitleDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+type TitleProps = {
+  color?: keyof typeof theme.colors;
+  bold?: boolean;
+};
+
+export const Title = styled.span<TitleProps>`
+  ${({ theme, color = "white", bold }) => css`
+    color: ${theme.colors[color]};
+    font-weight: ${bold ? theme.fonts.weight.bold : theme.fonts.weight.normal};
+    padding: ${theme.spacings.xxsmall};
   `}
 `;
 
 export const Description = styled.span`
   ${({ theme }) => css`
-    padding: ${theme.spacings.xxsmall} 0;
+    padding: ${theme.spacings.xxsmall};
+  `}
+`;
+export const ActionButtonsContainer = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: ${theme.spacings.xxsmall};
+  `}
+`;
+
+type ActionButtonProps = {
+  color: keyof typeof theme.colors;
+  background: keyof typeof theme.colors;
+};
+export const ActionButton = styled.button<ActionButtonProps>`
+  ${({ theme, color, background }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${theme.colors.transparent};
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    outline: 0;
+    stroke-width: 2;
+    color: ${theme.colors[color]};
+    padding: 0.4rem;
+    transition: ${theme.transitions.fast};
+
+    &:hover {
+      color: ${theme.colors.white};
+      background-color: ${setLightness(0.5, theme.colors[background])};
+    }
   `}
 `;
