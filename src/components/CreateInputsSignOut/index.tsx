@@ -1,6 +1,14 @@
 "use client";
+import ReactInputMask from "react-input-mask";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -23,15 +31,13 @@ export const CreateInputsSignOut = ({
   phone,
   sex,
 }: CreateInputsSignOutProps) => {
-  const [value, setValue] = useState("male");
+  const [value, setValue] = useState("");
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<CreateInputsSignOutProps>({
     resolver: zodResolver(CreateAccountSchema),
-    mode: "all",
-    criteriaMode: "all",
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -76,6 +82,7 @@ export const CreateInputsSignOut = ({
           </DemoContainer>
         </LocalizationProvider> */}
 
+        <ReactInputMask mask="999.999.999-99" value={cpf} />
         <TextField
           variant="filled"
           label="CPF"
@@ -93,7 +100,7 @@ export const CreateInputsSignOut = ({
           error={!!errors.phone?.message}
           helperText={errors.phone?.message}
         />
-        {/* <FormControl required>
+        <FormControl required error={!!errors.sex?.message}>
           <FormLabel id="sex">Sexo</FormLabel>
           <RadioGroup
             aria-labelledby="sex"
@@ -112,7 +119,7 @@ export const CreateInputsSignOut = ({
               label="Feminino"
             />
           </RadioGroup>
-        </FormControl> */}
+        </FormControl>
         <Box
           display="flex"
           flexDirection="row"

@@ -37,15 +37,15 @@ const GlobalStyles = createGlobalStyle`
 
       ::selection {
         color: ${theme.colors.white};
-        background-color: ${theme.colors.primaryMain};
+        background-color: ${theme.colors.primary};
       }
     `}
 
-    button {
+    button, a {
       cursor: pointer;
     }
 
-    a{
+    a {
       text-decoration: none !important;
     }
   }

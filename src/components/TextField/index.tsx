@@ -31,6 +31,7 @@ export type TextFieldProps = {
   onChangeValue?: (value?: string) => void;
   onClickIcon?: () => void;
   required?: boolean;
+  disabled?: boolean;
 } & InputHtmlProps;
 
 const TextField = ({
@@ -67,18 +68,6 @@ const TextField = ({
     onChangeValue && onChangeValue(masked);
   };
 
-  // const setValue = useCallback(
-  //   (value?: string) => {
-  //     setFieldValue(() => {
-  //       if (value === undefined) return "";
-  //       const newValue = String(value || "");
-  //       const masked = mask ? masks[mask](newValue) : newValue;
-  //       return masked;
-  //     });
-  //   },
-  //   [mask],
-  // );
-
   useEffect(() => {
     if (fieldRef.current) {
       fieldRef.current.value = fieldValue || "";
@@ -94,7 +83,9 @@ const TextField = ({
     >
       <S.Container hasClickableIcon={!!icon && !!onClickIcon}>
         <S.Label hasValue={!!fieldValue} inputAs={as} isDisabled={disabled}>
-          <span>{label}</span>
+          <span>
+            {label} {required ? "*" : ""}
+          </span>
           <S.InputContainer size={size} hasIcon={!!icon}>
             <S.Input
               inputSize={size}
@@ -109,9 +100,6 @@ const TextField = ({
             {icon && onClickIcon && <S.IconButton>{icon}</S.IconButton>}
           </S.InputContainer>
         </S.Label>
-        {/* {!!icon && !onClickIcon && (
-          <S.IconButton onClick={onClickIcon}>{icon}</S.IconButton>
-        )} */}
       </S.Container>
     </S.Wrapper>
   );

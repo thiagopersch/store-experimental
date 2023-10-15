@@ -35,16 +35,74 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     children: "My Button",
+    color: "primary",
+    labelColor: "white",
     size: "medium",
     variant: "contained",
+  },
+};
+
+export const Contained: Story = {
+  args: {
+    children: "contained",
+    color: "primary",
+    labelColor: "white",
+    size: "medium",
+    variant: "contained",
+  },
+};
+
+export const Outlined: Story = {
+  args: {
+    children: "outline",
+    color: "primary",
+    labelColor: "primary",
+    size: "medium",
+    variant: "outlined",
+  },
+};
+
+export const Text: Story = {
+  args: {
+    children: "text",
+    color: "primary",
+    labelColor: "primary",
+    size: "medium",
+    variant: "text",
   },
 };
 
 export const WithIcon: Story = {
   args: {
     children: "My Button",
+    color: "primary",
+    labelColor: "white",
     size: "medium",
     variant: "contained",
+    icon: <Plus />,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: "My Button",
+    color: "primary",
+    labelColor: "white",
+    size: "medium",
+    variant: "contained",
+    disabled: true,
+    icon: <Plus />,
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    children: "My Button",
+    color: "primary",
+    labelColor: "white",
+    size: "medium",
+    variant: "contained",
+    fullWidth: true,
     icon: <Plus />,
   },
 };

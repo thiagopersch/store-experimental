@@ -2,12 +2,12 @@
 
 import { ReactNode, createContext } from "react";
 import { QueryClientProvider } from "react-query";
-import { ThemeProvider } from "styled-components";
 
 import { queryClient } from "@/services/api";
 
 import GlobalStyles from "@/styles/global";
 import theme from "@/styles/theme";
+import { ThemeProvider } from "styled-components";
 
 export const ThemeContext = createContext("");
 

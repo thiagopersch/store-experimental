@@ -2,22 +2,27 @@ import { ReactNode } from "react";
 
 import { DefaultTheme } from "styled-components";
 
-import Logo from "@/assets/images/white/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import Logo from "../../assets/images/white/logo.png";
 
-import { Box } from "../Box";
 import Button from "../Button";
+import TextField from "../TextField";
 import * as S from "./styles";
 
 export type NavbarProps = {
   children?: string | ReactNode;
+  enableColorOnDark?: boolean;
   color?: keyof DefaultTheme["colors"];
   position?: "absolute" | "fixed" | "relative" | "static" | "sticky";
-  sx?: Array<Function | Object | boolean> | Function | Object;
 };
 
-const Navbar = ({ children, color, position, sx }: NavbarProps) => {
+const Navbar = ({
+  children,
+  color,
+  position,
+  enableColorOnDark,
+}: NavbarProps) => {
   return (
     <S.Wrapper color={color}>
       <S.LogoLink>
@@ -31,16 +36,18 @@ const Navbar = ({ children, color, position, sx }: NavbarProps) => {
           />
         </Link>
       </S.LogoLink>
-      <Box sx={{ display: "flex" }}>
-        <div>
-          <input type="search" placeholder="Pesquise aqui..." />
-        </div>
+      <div style={{ display: "flex" }}>
+        <form>
+          <TextField label="Pesquise aqui..." name="search" type="search" />
+        </form>
         <div>
           <Link href="/sign-in">
-            <Button>Login</Button>
+            <Button color="success" labelColor="white" variant="contained">
+              Login
+            </Button>
           </Link>
         </div>
-      </Box>
+      </div>
     </S.Wrapper>
     // <AppBar position="static">
     //   <Toolbar>

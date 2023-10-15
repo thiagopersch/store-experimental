@@ -9,13 +9,13 @@ type WrapperProps = {
 
 const wrapperInputModifiers = {
   large: () => css`
-    height: 5rem;
+    height: 6rem;
   `,
   medium: () => css`
-    height: 3rem;
+    height: 4rem;
   `,
   small: () => css`
-    height: 2rem;
+    height: 3rem;
   `,
 };
 
@@ -238,5 +238,15 @@ export const IconButton = styled.button.attrs({ type: "button" })`
     margin: 0.2rem;
     margin-left: 0.5rem;
     stroke-width: 2;
+  `}
+`;
+
+type AsteriskProps = {
+  required: boolean;
+};
+
+export const Asterisk = styled.label<AsteriskProps>`
+  ${({ theme, required }) => css`
+    color: ${required ? theme.colors.error : "inherit"};
   `}
 `;

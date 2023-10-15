@@ -25,7 +25,13 @@ export const ModalFormCreateAccount = () => {
         Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
         experiência incrível! 🤩
       </Typography>
-      <CreateInputsSignOut />
+      <CreateInputsSignOut
+        name={""}
+        birth_date={""}
+        cpf={""}
+        phone={""}
+        sex={""}
+      />
     </Box>
   );
 };
