@@ -89,6 +89,7 @@ export default {
     xxlarge: "5.6rem",
     huge: "6.2rem",
     xhuge: "6.4rem",
+    auto: "auto",
   },
   layout: {
     display: {
