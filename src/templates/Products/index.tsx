@@ -19,10 +19,12 @@ export default function Products() {
             </Link>
           </Card.Header>
           <Card.Content>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
-            perferendis, recusandae ducimus, aspernatur, odit dolorem
-            dignissimos obcaecati eveniet rerum dicta placeat blanditiis
-            reiciendis ex provident aperiam explicabo quibusdam iusto in?
+            <Link href="/" passHref>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
+              perferendis, recusandae ducimus, aspernatur, odit dolorem
+              dignissimos obcaecati eveniet rerum dicta placeat blanditiis
+              reiciendis ex provident aperiam explicabo quibusdam iusto in?
+            </Link>
           </Card.Content>
           <Card.Actions>
             <Link href="/" passHref>
