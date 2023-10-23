@@ -1,5 +1,6 @@
+import { ChevronDown } from "@styled-icons/feather";
 import styled, { DefaultTheme, css } from "styled-components";
-import { AccordionProps } from ".";
+import { AccordionProps, Orientation } from ".";
 
 type WrapperProps = Pick<
   AccordionProps,
@@ -7,9 +8,10 @@ type WrapperProps = Pick<
   | "disabled"
   | "disabledGutters"
   | "rounded"
-  | "icon"
-  | "label"
   | "labelColor"
+  | "open"
+  | "label"
+  | "icon"
 >;
 
 const accordionModifiers = {
@@ -21,14 +23,15 @@ const accordionModifiers = {
     color: ${theme.colors.grey};
     cursor: not-allowed;
     box-shadow: none;
+    pointer-events: none;
   `,
   disabledGutters: (theme: DefaultTheme) => css`
     margin-bottom: ${theme.spacings.none};
   `,
 };
 
-export const Wrapper = styled.section<WrapperProps>`
-  ${({ theme, rounded, color, disabled, disabledGutters }) => css`
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, rounded, color = "primary", disabled, disabledGutters }) => css`
     display: ${theme.layout.display.flex};
     justify-content: ${theme.layout.justifyContent.spaceBetween};
     align-items: ${theme.layout.alignItems.center};
@@ -44,31 +47,113 @@ export const Wrapper = styled.section<WrapperProps>`
   `}
 `;
 
-export const Label = styled.button<WrapperProps>`
-  ${({ theme, labelColor }) => css`
+export const Label = styled.label<WrapperProps>`
+  ${({ theme, labelColor = "white", disabled }) => css`
     border: 0;
     background-color: ${theme.colors.transparent};
-    color: ${theme.colors[labelColor]};
+    cursor: pointer;
+    color: ${disabled ? theme.colors.grey : theme.colors[labelColor]};
+
+    ${disabled && accordionModifiers.disabled(theme)};
   `}
 `;
 
-type ArrowIconProps = {
-  isOpen: boolean;
-};
-
-export const Icon = styled.button<WrapperProps>`
-  ${({ theme, labelColor }) => css`
+export const Icon = styled(ChevronDown)<WrapperProps>`
+  ${({ theme, labelColor = "white", open, disabled }) => css`
     border: 0;
     background-color: ${theme.colors.transparent};
+    transition: ${theme.transitions.fast};
+    color: ${theme.colors[labelColor]};
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    transition: ${theme.transitions.fast};
 
-    &:focus {
-      transform: rotateX(180deg);
-    }
+    ${open &&
+    css`
+      transform: rotateZ(180deg);
+    `}
 
-    svg {
-      width: 3rem;
-      height: 3rem;
-      color: ${theme.colors[labelColor]};
+    ${disabled && accordionModifiers.disabled(theme)};
+  `}
+`;
+
+const optionsListModifiers = {
+  bottom: () => css`
+    top: 100%;
+    border-radius: 0 0 0.5rem 0.5rem;
+  `,
+  top: () => css`
+    bottom: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+  `,
+};
+
+type ContentProps = {
+  isOpen: boolean;
+  orientation: Orientation;
+};
+
+const slideOut = (orientation: Orientation) => css`
+  @keyframes SlideOut {
+    from {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
     }
+    to {
+      visibility: hidden;
+      opacity: 0;
+      transform: ${orientation === "top"
+        ? "translateY(0.2rem)"
+        : "translateY(-0.2rem)"};
+    }
+  }
+`;
+
+const slideIn = (orientation: Orientation) => css`
+  @keyframes SlideIn {
+    from {
+      visibility: hidden;
+      opacity: 0;
+
+      transform: ${orientation === "top"
+        ? "translateY(0.2rem)"
+        : "translateY(-0.2rem)"};
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const WrapperContent = styled.div<ContentProps>`
+  ${({ theme, isOpen, orientation }) => css`
+    ${slideIn(orientation)}
+    ${slideOut(orientation)}
+
+    margin-top: -0.8rem;
+    transform: ${orientation === "top"
+      ? "translateY(0.2rem)"
+      : "translateY(-0.2rem)"};
+
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-name: ${isOpen ? "SlideIn" : "SlideOut"};
+
+    ${optionsListModifiers[orientation]};
+  `}
+`;
+
+export const Content = styled.div<WrapperProps>`
+  ${({ theme, color = "primary" }) => css`
+    background-color: ${theme.colors[color]};
+    border-radius: 0 0 0.3rem 0.3rem;
+    box-shadow: ${theme.shadows.default};
+    padding: 2rem;
   `}
 `;

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Base from ".";
 
 const meta: Meta<typeof Base> = {
-  title: "Surfaces/Card/Base",
+  title: "Surfaces/Card",
   component: Base,
   argTypes: {
     children: {
