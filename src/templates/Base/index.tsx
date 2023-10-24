@@ -1,15 +1,8 @@
 import PageContainer from "@/components/PageContainer";
-import { Search } from "@/components/Search";
-import { SearchIconWrapper } from "@/components/SearchIconWrapper";
-import { StyledInputBase } from "@/components/StyledInputBase";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import { AppBar, Box, Button, IconButton, Toolbar } from "@mui/material";
-import Image from "next/image";
+import { Box } from "@mui/material";
 import { ReactNode } from "react";
 
-import Logo from "@/assets/images/white/logo.png";
-import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 type BaseProps = {
   children?: ReactNode;
@@ -22,7 +15,8 @@ export default function Base({ children }: BaseProps) {
         flexGrow: 1,
       }}
     >
-      <AppBar position="static">
+      <Navbar />
+      {/* <AppBar position="static">
         <Toolbar>
           <IconButton
             size="large"
@@ -61,7 +55,7 @@ export default function Base({ children }: BaseProps) {
             </Link>
           </Box>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <PageContainer>{children}</PageContainer>
     </Box>
   );
