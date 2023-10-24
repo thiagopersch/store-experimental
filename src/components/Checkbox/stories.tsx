@@ -22,3 +22,10 @@ export const Default: Story = {
     children: "My Checkbox",
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    children: "My Checkbox",
+    disabled: true,
+  },
+};

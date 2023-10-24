@@ -35,7 +35,7 @@ const Checkbox = ({
   }, [checked]);
 
   return (
-    <S.Wrapper onClick={() => setChecked(!checked)}>
+    <S.Wrapper onClick={() => setChecked(!checked)} disabled={disabled}>
       <S.Input
         type="checkbox"
         id={childrenFor}

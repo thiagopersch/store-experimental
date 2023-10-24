@@ -26,6 +26,7 @@ type Story = StoryObj<typeof Switch>;
 export const Default: Story = {
   args: {
     label: "My Switch",
+    color: "primary",
   },
 };
 

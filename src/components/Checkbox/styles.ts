@@ -1,14 +1,25 @@
-import styled, { css } from "styled-components";
+import styled, { DefaultTheme, css } from "styled-components";
 import media from "styled-media-query";
 import { CheckboxProps } from ".";
 
 export type InputProps = Pick<CheckboxProps, "labelColor" | "disabled">;
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
+const checkboxModifiers = {
+  disabled: (theme: DefaultTheme) => css`
+    color: ${theme.colors.grey};
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  `,
+};
+
+export const Wrapper = styled.div<InputProps>`
+  ${({ theme, disabled }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${disabled && checkboxModifiers.disabled(theme)}
   `}
 `;
 
@@ -31,10 +42,10 @@ export const Input = styled.input<InputProps>`
       disabled &&
       css`
         border: 0.1rem solid ${theme.colors.grey};
-        opacity: 0.6;
-        cursor: not-allowed;
       `
     }
+
+    ${disabled && checkboxModifiers.disabled(theme)}
 
     &::before {
       transition:
@@ -79,12 +90,7 @@ export const Label = styled.label<InputProps>`
     line-height: 1.8rem;
     user-select: none;
 
-    ${disabled &&
-    css`
-      color: ${theme.colors.grey};
-      opacity: 0.6;
-      cursor: not-allowed;
-    `}
+    ${disabled && checkboxModifiers.disabled(theme)}
 
     ${media.lessThan("medium")`
       font-size: ${theme.fonts.sizes.xsmall};

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { DefaultTheme, css } from "styled-components";
 import { SwitchProps } from ".";
 
 export type WrapperProps = {
@@ -6,39 +6,39 @@ export type WrapperProps = {
 } & Pick<SwitchProps, "disabled" | "color">;
 
 const switchModifications = {
-  disabled: () => css`
-    &:disabled {
-      cursor: not-allowed;
-      filter: saturate(30%);
-    }
+  disabled: (theme: DefaultTheme) => css`
+    color: ${theme.colors.grey};
+    cursor: not-allowed;
+    pointer-events: none;
   `,
 };
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, disabled }) => css`
     position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
+
+    ${disabled && switchModifications.disabled(theme)};
   `}
 `;
 
 export const Switch = styled.input<WrapperProps>`
-  ${({ theme, color = "primary" }) => css`
+  ${({ theme, color, disabled }) => css`
     opacity: 0;
-    z-index: 1;
     border-radius: 1.5rem;
     width: 4.2rem;
     height: 2.6rem;
     cursor: pointer;
     box-shadow: ${theme.shadows.default};
-    z-index: -1;
+    z-index: 0;
 
     &:checked + ${Toggle} {
       box-shadow: ${theme.shadows.focus};
-      background: ${theme.colors[color]};
+      background: ${disabled ? theme.colors.disabled : theme.colors[color]};
       transition: ${theme.transitions.fast};
 
       &::after {
@@ -52,6 +52,7 @@ export const Switch = styled.input<WrapperProps>`
         transition: ${theme.transitions.fast};
       }
     }
+    ${disabled && switchModifications.disabled(theme)};
   `}
 `;
 
@@ -68,6 +69,7 @@ export const Toggle = styled.label<WrapperProps>`
     cursor: pointer;
     transition: ${theme.transitions.fast};
     z-index: 1;
+    pointer-events: ${disabled ? "none" : "all"};
 
     &::after {
       content: "";
@@ -80,20 +82,22 @@ export const Toggle = styled.label<WrapperProps>`
       transition: ${theme.transitions.fast};
       box-shadow: ${theme.shadows.notFocus};
     }
-    ${disabled && switchModifications.disabled()};
+
+    ${disabled && switchModifications.disabled(theme)};
   `}
 `;
 
 export const Label = styled.label<WrapperProps>`
-  ${({ theme, disabled, color = "primary" }) => css`
+  ${({ theme, disabled, color }) => css`
     cursor: pointer;
     font-family: ${theme.fonts.family.primary};
     font-weight: ${theme.fonts.weight.normal};
     font-size: ${theme.fonts.sizes.small};
     color: ${theme.colors[color]};
     padding-left: ${theme.spacings.xsmall};
+    pointer-events: ${disabled ? "none" : "all"};
 
-    ${disabled && switchModifications.disabled()};
+    ${disabled && switchModifications.disabled(theme)};
   `}
 `;
 
