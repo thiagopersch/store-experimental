@@ -1,5 +1,5 @@
 import styled, { DefaultTheme, css } from "styled-components";
-import { InputAs } from ".";
+import { InputAs, TextFieldProps } from ".";
 
 type WrapperProps = {
   inputAs: InputAs;
@@ -162,7 +162,7 @@ const inputContainerModifiers = {
 type InputContainerProps = {
   hasIcon: boolean;
   size: "large" | "medium" | "small";
-};
+} & Pick<TextFieldProps, "variant">;
 
 export const InputContainer = styled.div<InputContainerProps>`
   ${({ size, hasIcon }) => css`

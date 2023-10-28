@@ -1,13 +1,16 @@
 import styled, { css } from "styled-components";
 
+export const Wrapper = styled.main`
+  padding: 5rem;
+`;
+
 export const CardProducts = styled.div`
   ${({ theme }) => css`
-    padding: 15rem;
+    padding: 5rem;
     display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-    align-content: stretch;
-    flex-flow: row wrap;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 55rem;
   `}
 `;

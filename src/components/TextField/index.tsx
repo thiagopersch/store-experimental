@@ -32,6 +32,7 @@ export type TextFieldProps = {
   onClickIcon?: () => void;
   required?: boolean;
   disabled?: boolean;
+  variant?: "filled" | "outlined" | "standard";
 } & InputHtmlProps;
 
 const TextField = ({
@@ -48,6 +49,7 @@ const TextField = ({
   required,
   onChangeValue,
   onClickIcon,
+  variant = "outlined",
   ...props
 }: TextFieldProps) => {
   const [fieldValue, setFieldValue] = useState<string>();
@@ -95,6 +97,7 @@ const TextField = ({
               name={name}
               disabled={disabled}
               value={value}
+              variant={variant}
               {...props}
             />
             {icon && onClickIcon && <S.IconButton>{icon}</S.IconButton>}
