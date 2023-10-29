@@ -1,8 +1,15 @@
-import PageContainer from "@/components/PageContainer";
-import { Box } from "@mui/material";
+import { Menu, Search as SearchIcon } from "@mui/icons-material";
+import { AppBar, Box, Button, IconButton, Toolbar } from "@mui/material";
+import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
 
-import Navbar from "@/components/Navbar";
+import PageContainer from "@/components/PageContainer";
+import { Search } from "@/components/Search";
+import { SearchIconWrapper } from "@/components/SearchIconWrapper";
+import { StyledInputBase } from "@/components/StyledInputBase";
+
+import Logo from "@/assets/images/white/logo.png";
 
 type BaseProps = {
   children?: ReactNode;
@@ -15,17 +22,17 @@ export default function Base({ children }: BaseProps) {
         flexGrow: 1,
       }}
     >
-      <Navbar />
-      {/* <AppBar position="static">
+      {/* <Navbar /> */}
+      <AppBar position="static">
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
-            aria-label="open drawer"
+            aria-label="open menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Box sx={{ flexGrow: 1 }}>
             <Link href="/">
@@ -55,7 +62,7 @@ export default function Base({ children }: BaseProps) {
             </Link>
           </Box>
         </Toolbar>
-      </AppBar> */}
+      </AppBar>
       <PageContainer>{children}</PageContainer>
     </Box>
   );

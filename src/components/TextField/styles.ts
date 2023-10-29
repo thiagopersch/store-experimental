@@ -1,5 +1,5 @@
 import styled, { DefaultTheme, css } from "styled-components";
-import { InputAs, TextFieldProps } from ".";
+import { InputAs } from ".";
 
 type WrapperProps = {
   inputAs: InputAs;
@@ -114,13 +114,14 @@ export const Label = styled.label<LabelProps>`
     box-shadow: inset 0rem 0rem 0rem 0.1rem ${theme.colors.grey};
 
     span {
-      padding: 0 0.3rem;
+      padding: 0.5rem 1rem;
       position: absolute;
       left: 1rem;
       background: ${theme.colors.white};
       font-size: ${theme.fonts.sizes.small};
       transition: all 0.15s ease-out;
       color: ${theme.colors.grey};
+      border-radius: 10rem;
 
       ${labelModifiers[inputAs]}
     }
@@ -162,7 +163,7 @@ const inputContainerModifiers = {
 type InputContainerProps = {
   hasIcon: boolean;
   size: "large" | "medium" | "small";
-} & Pick<TextFieldProps, "variant">;
+};
 
 export const InputContainer = styled.div<InputContainerProps>`
   ${({ size, hasIcon }) => css`
@@ -209,8 +210,8 @@ export const Input = styled.input<InputProps>`
     &:not(input) {
       ${TextArea(theme)}
     }
-    background: transparent;
-    border: none;
+    background: ${theme.colors.white};
+    border: 0.1rem solid ${theme.colors.primary};
     outline: 0;
     border-radius: 0.5rem;
     width: 100%;
@@ -220,6 +221,10 @@ export const Input = styled.input<InputProps>`
     max-height: inherit;
     color: ${theme.colors.black};
     font-family: ${theme.fonts.family.primary};
+
+    &:focus {
+      border: 0.2rem solid ${theme.colors.primary};
+    }
 
     ${inputModifiers[inputSize](theme)}
     ${!!disabled && inputModifiers.disabled(theme)}

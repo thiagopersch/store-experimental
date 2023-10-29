@@ -5,16 +5,12 @@
  *
  */
 
-import { DefaultTheme, createGlobalStyle, css } from "styled-components";
-
-type GlobalStyleProps = {
-  theme?: DefaultTheme;
-};
+import { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 
     &::before, &::after {
@@ -35,17 +31,14 @@ const GlobalStyles = createGlobalStyle`
       color: ${theme.colors.black};
       outline: none;
 
-      ::selection {
-        color: ${theme.colors.white};
+      & + &::selection {
+        color: ${theme.colors.black};
         background-color: ${theme.colors.primary};
       }
     `}
 
     button, a {
       cursor: pointer;
-    }
-
-    a {
       text-decoration: none !important;
     }
   }

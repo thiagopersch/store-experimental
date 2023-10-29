@@ -1,19 +1,12 @@
 "use client";
-import ReactInputMask from "react-input-mask";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
 import { ChangeEvent, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import TextField from "../TextField";
 import { CreateAccountSchema } from "./schema";
 
 type CreateInputsSignOutProps = {
@@ -52,16 +45,22 @@ export const CreateInputsSignOut = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box display="flex" flexDirection="column" gap={1}>
         <TextField
-          {...register("name")}
-          aria-invalid={errors.name ? "true" : "false"}
-          id="name"
-          variant="filled"
           type="text"
+          id="name"
           label="Nome completo"
-          error={!!errors.name?.message}
-          helperText={errors.name?.message}
-          required
+          {...register("name")}
         />
+        {/* <TextField
+           {...register("name")}
+           aria-invalid={errors.name ? "true" : "false"}
+           id="name"
+           variant="filled"
+           type="text"
+           label="Nome completo"
+           error={!!errors.name?.message}
+           helperText={errors.name?.message}
+           required
+         /> */}
         {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
             <DatePicker
@@ -80,18 +79,16 @@ export const CreateInputsSignOut = ({
               disableFuture
             />
           </DemoContainer>
-        </LocalizationProvider> */}
+            </LocalizationProvider> */}
 
-        <ReactInputMask mask="999.999.999-99" value={cpf} />
-        <TextField
+        {/*<TextField
           variant="filled"
           label="CPF"
           required
           {...register("cpf")}
           error={!!errors.cpf?.message}
           helperText={errors.cpf?.message}
-        />
-
+        ></TextField>
         <TextField
           variant="filled"
           label="Celular"
@@ -119,7 +116,7 @@ export const CreateInputsSignOut = ({
               label="Feminino"
             />
           </RadioGroup>
-        </FormControl>
+        </FormControl>*/}
         <Box
           display="flex"
           flexDirection="row"

@@ -7,6 +7,7 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     children: { type: "string" },
     color: { type: "string" },
+    size: { type: "string" },
   },
 };
 
@@ -16,7 +17,7 @@ type Story = StoryObj<typeof Typography>;
 export const Text: Story = {
   args: {
     children: "My Typography",
-    color: "primaryMain",
+    color: "primary",
     size: "small",
     align: "left",
     transform: "none",

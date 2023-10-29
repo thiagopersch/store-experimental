@@ -1,6 +1,8 @@
 import {
   InputHTMLAttributes,
+  ReactNode,
   TextareaHTMLAttributes,
+  forwardRef,
   useEffect,
   useRef,
   useState,
@@ -18,7 +20,7 @@ type InputHtmlProps =
 
 export type InputAs = "input" | "textarea";
 
-export type TextFieldProps = {
+export type TextFieldProps = InputHtmlProps & {
   name: string;
   label: string;
   as?: InputAs;
@@ -26,32 +28,36 @@ export type TextFieldProps = {
   type?: string;
   icon?: React.ReactNode;
   mask?: keyof typeof masks;
-  error?: string;
+  error?: string | ReactNode;
   containerStyle?: CSSProperties;
   onChangeValue?: (value?: string) => void;
   onClickIcon?: () => void;
   required?: boolean;
   disabled?: boolean;
-  variant?: "filled" | "outlined" | "standard";
-} & InputHtmlProps;
+};
 
-const TextField = ({
-  as = "input",
-  size = "large",
-  name,
-  label,
-  value,
-  mask,
-  icon,
-  error: errorProp,
-  containerStyle,
-  disabled = false,
-  required,
-  onChangeValue,
-  onClickIcon,
-  variant = "outlined",
-  ...props
-}: TextFieldProps) => {
+const TextField: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  TextFieldProps
+> = (
+  {
+    as = "input",
+    size = "large",
+    name,
+    label,
+    value,
+    mask,
+    icon,
+    error: errorProp,
+    containerStyle,
+    disabled = false,
+    required,
+    onChangeValue,
+    onClickIcon,
+    ...props
+  },
+  ref,
+) => {
   const [fieldValue, setFieldValue] = useState<string>();
   const fieldRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
@@ -76,6 +82,8 @@ const TextField = ({
     }
   }, [fieldValue]);
 
+  const inputHasValue = !!fieldRef.current?.value;
+
   return (
     <S.Wrapper
       inputAs={as}
@@ -84,28 +92,38 @@ const TextField = ({
       size={size}
     >
       <S.Container hasClickableIcon={!!icon && !!onClickIcon}>
-        <S.Label hasValue={!!fieldValue} inputAs={as} isDisabled={disabled}>
+        <S.Label
+          htmlFor={name}
+          hasValue={inputHasValue}
+          inputAs={as}
+          isDisabled={disabled}
+        >
           <span>
             {label} {required ? "*" : ""}
           </span>
           <S.InputContainer size={size} hasIcon={!!icon}>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <S.Input
               inputSize={size}
-              onChange={handleChange}
+              id={name}
               as={as}
-              ref={mergeRefs([fieldRef])}
+              ref={mergeRefs([fieldRef, ref])}
               name={name}
               disabled={disabled}
-              value={value}
-              variant={variant}
+              value={fieldValue}
+              onChange={handleChange}
               {...props}
             />
-            {icon && onClickIcon && <S.IconButton>{icon}</S.IconButton>}
+            {!!icon && !onClickIcon && <S.IconButton>{icon}</S.IconButton>}
           </S.InputContainer>
         </S.Label>
+        {!!icon && !!onClickIcon && (
+          <S.IconButton onClick={onClickIcon}>{icon}</S.IconButton>
+        )}
       </S.Container>
     </S.Wrapper>
   );
 };
 
-export default TextField;
+export default forwardRef(TextField);

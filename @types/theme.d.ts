@@ -1,5 +1,5 @@
+import "@mui/material/styles";
 import React from "react";
-import { ThemeOptions } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -15,7 +15,7 @@ declare module "@mui/material/styles" {
   }
 
   interface ThemeOptions {
-    palette: {
+    export palette: {
       primary: React.CSSProperties["color"];
       secondary: React.CSSProperties["color"];
       error: React.CSSProperties["color"];

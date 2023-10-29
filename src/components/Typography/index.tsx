@@ -4,10 +4,11 @@ import * as S from "./styles";
 
 export type TypographyProps = {
   children: string | ReactNode;
-  color?: keyof DefaultTheme["colors"];
-  size?: "small" | "medium" | "large" | "huge" | "xhuge";
+  color: keyof DefaultTheme["colors"];
+  size: keyof DefaultTheme["fonts"]["sizes"];
   align?: "center" | "inherit" | "justify" | "left" | "right";
   transform?: "capitalize" | "lowercase" | "uppercase" | "none";
+  bold?: boolean;
 };
 
 const Typography = ({
@@ -16,9 +17,16 @@ const Typography = ({
   color,
   size = "small",
   transform = "none",
+  bold,
 }: TypographyProps) => {
   return (
-    <S.Wrapper align={align} color={color} size={size} transform={transform}>
+    <S.Wrapper
+      bold={bold}
+      align={align}
+      color={color}
+      size={size}
+      transform={transform}
+    >
       {children}
     </S.Wrapper>
   );

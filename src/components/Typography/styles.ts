@@ -3,10 +3,13 @@ import { TypographyProps } from ".";
 
 export type TypographyPropsPicker = Pick<
   TypographyProps,
-  "align" | "color" | "size" | "transform"
+  "align" | "color" | "size" | "transform" | "bold"
 >;
 
 const typographyModifiers = {
+  bold: (theme: DefaultTheme) => css`
+    font-weight: ${theme.fonts.weight.bold};
+  `,
   capitalize: () => css`
     text-transform: capitalize;
   `,
@@ -34,30 +37,16 @@ const typographyModifiers = {
   right: () => css`
     text-align: right;
   `,
-  small: (theme: DefaultTheme) => css`
-    font-size: ${theme.fonts.sizes.small};
-  `,
-  medium: (theme: DefaultTheme) => css`
-    font-size: ${theme.fonts.sizes.medium};
-  `,
-  large: (theme: DefaultTheme) => css`
-    font-size: ${theme.fonts.sizes.large};
-  `,
-  huge: (theme: DefaultTheme) => css`
-    font-size: ${theme.fonts.sizes.huge};
-  `,
-  xhuge: (theme: DefaultTheme) => css`
-    font-size: ${theme.fonts.sizes.xhuge};
-  `,
 };
 
-export const Wrapper = styled.h1<TypographyPropsPicker>`
-  ${({ theme, color = "primary", size, align, transform }) => css`
+export const Wrapper = styled.span<TypographyPropsPicker>`
+  ${({ theme, color, size, align, transform, bold }) => css`
     color: ${theme.colors[color]};
     transition: ${theme.transitions.fast};
+    font-size: ${theme.fonts.sizes[size]};
 
-    ${size && typographyModifiers[size](theme)}
-    ${align && typographyModifiers[align]}
-    ${transform && typographyModifiers[transform]}
+    ${!!bold && typographyModifiers.bold(theme)};
+    ${!!align && typographyModifiers[align]};
+    ${!!transform && typographyModifiers[transform]};
   `}
 `;
