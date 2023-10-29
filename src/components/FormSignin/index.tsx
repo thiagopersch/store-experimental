@@ -1,13 +1,17 @@
 "use client";
 
-import LoginOutlined from "@mui/icons-material/LoginOutlined";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-
 import { useRouter } from "next/navigation";
 
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import TextField from "../TextField";
+import Typography from "../Typography";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LogIn } from "@styled-icons/feather";
+import Button from "../Button";
+import { SingInSchema } from "./schema";
+
+import * as S from "./styles";
 
 type FormSignInProps = {
   email?: string;
@@ -18,8 +22,13 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
   const {
     handleSubmit,
     register,
+    control,
     formState: { errors },
-  } = useForm<FormSignInProps>();
+  } = useForm<FormSignInProps>({
+    resolver: zodResolver(SingInSchema),
+    mode: "all",
+    criteriaMode: "all",
+  });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormSignInProps> = async (data) => {
@@ -29,47 +38,42 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box sx={{ flexGrow: 1 }} display="flex" flexDirection="column" gap={3}>
-        <TextField
-          variant="filled"
-          type="email"
-          label="E-mail"
-          required
-          {...register("email", {
-            required: {
-              value: true,
-              message: `
-                  E-mail é obrigatório.
-                `,
-            },
-          })}
-          aria-invalid={errors.email ? "true" : "false"}
+      <S.Inputs>
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <TextField {...field} id="email" type="email" label="E-mail" />
+          )}
         />
-        <TextField
-          variant="filled"
-          type="password"
-          label="Senha"
-          required
-          {...register("password", {
-            required: {
-              value: true,
-              message: `
-                  E-mail é obrigatório.
-                `,
-            },
-          })}
-          aria-invalid={errors.password ? "true" : "false"}
+        {
+          <Typography size="xxsmall" color="error">
+            {errors.email?.message}
+          </Typography>
+        }
+        <Controller
+          name="password"
+          control={control}
+          render={({ field }) => (
+            <TextField {...field} id="password" type="password" label="Senha" />
+          )}
         />
+        {
+          <Typography size="xxsmall" color="error">
+            {errors.password?.message}
+          </Typography>
+        }
+      </S.Inputs>
+      <div>
         <Button
-          type="submit"
-          variant="contained"
-          size="large"
           color="primary"
-          endIcon={<LoginOutlined />}
+          labelColor="white"
+          variant="contained"
+          icon={<LogIn />}
         >
-          Entrar
+          Login
         </Button>
-      </Box>
+      </div>
     </form>
   );
 };
