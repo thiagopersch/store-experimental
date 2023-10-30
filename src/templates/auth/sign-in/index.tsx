@@ -14,7 +14,7 @@ const SignIn = () => {
     <Base>
       <S.Wrapper>
         <S.Header>
-          <Typography color="primary" align="center" size="large">
+          <Typography color="primary" align="center" size="large" bold>
             Login do cliente
           </Typography>
           <Typography color="grey" align="center" size="small">
@@ -23,27 +23,29 @@ const SignIn = () => {
           </Typography>
         </S.Header>
         <div>
-          <FormSignin />
-          <div>
-            <Typography color="black" size="small">
-              Não tem cadastro?
-            </Typography>
-            <Link href="/sign-out" passHref>
-              <Typography color="primary" size="small">
-                cadastre-se
+          <S.InputsDescription>
+            <FormSignin />
+            <S.CreateAccount>
+              <Typography color="black" size="small">
+                Não tem cadastro?
               </Typography>
-            </Link>
-          </div>
-          <div>
-            <Typography color="black" size="small">
-              Ao continuar com acesso, você concorda com a nossa
-              <Link href="#" passHref>
+              <Link href="/sign-out" passHref>
                 <Typography color="primary" size="small">
-                  politica de privacidade
+                  cadastre-se
                 </Typography>
               </Link>
-            </Typography>
-          </div>
+            </S.CreateAccount>
+            <div>
+              <Typography color="black" size="small">
+                Ao continuar com acesso, você concorda com a nossa
+                <Link href="#" passHref>
+                  <Typography color="primary" size="small">
+                    politica de privacidade
+                  </Typography>
+                </Link>
+              </Typography>
+            </div>
+          </S.InputsDescription>
         </div>
       </S.Wrapper>
     </Base>

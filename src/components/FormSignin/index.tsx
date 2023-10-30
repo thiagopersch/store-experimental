@@ -26,14 +26,14 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
     formState: { errors },
   } = useForm<FormSignInProps>({
     resolver: zodResolver(SingInSchema),
-    mode: "all",
+    mode: "onSubmit",
     criteriaMode: "all",
   });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormSignInProps> = async (data) => {
     console.log(data);
-    await router.push("/dashboard/main");
+    router.push("/dashboard/main");
   };
 
   return (
@@ -64,7 +64,7 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
           </Typography>
         }
       </S.Inputs>
-      <div>
+      <S.CTA>
         <Button
           color="primary"
           labelColor="white"
@@ -73,7 +73,7 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
         >
           Login
         </Button>
-      </div>
+      </S.CTA>
     </form>
   );
 };
