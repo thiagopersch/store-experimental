@@ -1,12 +1,18 @@
 import styled, { DefaultTheme, css } from "styled-components";
+import media from "styled-media-query";
 import { TypographyProps } from ".";
 
 export type TypographyPropsPicker = Pick<
   TypographyProps,
-  "align" | "color" | "size" | "transform" | "bold"
+  "align" | "color" | "size" | "transform" | "bold" | "mobile"
 >;
 
 const typographyModifiers = {
+  mobile: (theme: DefaultTheme) => css`
+    ${media.lessThan("medium")`
+      font-size: ${theme.fonts.sizes.xsmall};
+    `}
+  `,
   bold: (theme: DefaultTheme) => css`
     font-weight: ${theme.fonts.weight.bold};
   `,
@@ -40,11 +46,12 @@ const typographyModifiers = {
 };
 
 export const Wrapper = styled.span<TypographyPropsPicker>`
-  ${({ theme, color, size, align, transform, bold }) => css`
+  ${({ theme, color, size, align, transform, bold, mobile }) => css`
     color: ${theme.colors[color]};
     transition: ${theme.transitions.fast};
     font-size: ${theme.fonts.sizes[size]};
 
+    ${!!mobile && typographyModifiers.mobile(theme)};
     ${!!bold && typographyModifiers.bold(theme)};
     ${!!align && typographyModifiers[align]};
     ${!!transform && typographyModifiers[transform]};

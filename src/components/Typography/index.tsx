@@ -9,15 +9,17 @@ export type TypographyProps = {
   align?: "center" | "inherit" | "justify" | "left" | "right";
   transform?: "capitalize" | "lowercase" | "uppercase" | "none";
   bold?: boolean;
+  mobile?: boolean;
 };
 
 const Typography = ({
   children,
-  align = "justify",
+  align = "left",
   color,
   size = "small",
   transform = "none",
   bold,
+  mobile,
 }: TypographyProps) => {
   return (
     <S.Wrapper
@@ -26,6 +28,7 @@ const Typography = ({
       color={color}
       size={size}
       transform={transform}
+      mobile={mobile}
     >
       {children}
     </S.Wrapper>

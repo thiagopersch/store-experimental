@@ -2,7 +2,6 @@
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
 
 import { ModalFormCreateAccount } from "@/components/ModalFormCreateAccount";
 import Base from "@/templates/Base";
@@ -10,8 +9,8 @@ import Base from "@/templates/Base";
 const SignOut = () => {
   return (
     <Base>
-      <Stack
-        sx={{
+      <div
+        style={{
           display: "flex",
           justifyContent: "center",
           alignContent: "center",
@@ -25,7 +24,7 @@ const SignOut = () => {
             <ModalFormCreateAccount />
           </Box>
         </Container>
-      </Stack>
+      </div>
     </Base>
   );
 };

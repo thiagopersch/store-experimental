@@ -21,8 +21,3 @@ export const InputsDescription = styled.div`
     padding: 0;
   `}
 `;
-
-export const CreateAccount = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
