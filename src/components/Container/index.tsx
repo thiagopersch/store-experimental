@@ -13,7 +13,7 @@ export type ContainerProps = {
     | "fluid";
 };
 
-const Container = ({ children, breakpoints }: ContainerProps) => {
+const Container = ({ children, breakpoints = "xlarge" }: ContainerProps) => {
   return <S.Wrapper breakpoints={breakpoints}>{children}</S.Wrapper>;
 };
 

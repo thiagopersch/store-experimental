@@ -28,11 +28,11 @@ export const Input = styled.input<InputProps>`
     cursor: pointer;
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     appearance: none;
-    width: 1.8rem;
     height: 1.8rem;
+    width: 1.8rem;
     border: 0.08rem solid ${theme.colors.primary};
     border-radius: 0.3rem;
     outline: none;
@@ -84,9 +84,9 @@ export const Input = styled.input<InputProps>`
 export const Label = styled.label<InputProps>`
   ${({ theme, labelColor = "primary", disabled }) => css`
     cursor: pointer;
-    padding-left: ${theme.spacings.xxsmall};
+    margin: ${theme.spacings.xxsmall};
     color: ${theme.colors[labelColor]};
-    font-size: ${theme.fonts.sizes.small};
+    font-size: ${theme.fonts.sizes.xxsmall};
     line-height: 1.8rem;
     user-select: none;
 

@@ -28,7 +28,7 @@ const SignIn = () => {
             <div>
               <Typography color="black" size="small" mobile>
                 Não tem cadastro?&nbsp;
-                <Link href="/sign-out" passHref>
+                <Link href="/sign-up" passHref>
                   <Typography color="primary" size="small" mobile>
                     cadastre-se
                   </Typography>

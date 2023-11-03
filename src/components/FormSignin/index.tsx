@@ -1,14 +1,14 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LogIn } from "@styled-icons/feather";
 import { useRouter } from "next/navigation";
-
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+
+import Button from "../Button";
 import TextField from "../TextField";
 import Typography from "../Typography";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { LogIn } from "@styled-icons/feather";
-import Button from "../Button";
 import { SingInSchema } from "./schema";
 
 import * as S from "./styles";
@@ -21,19 +21,18 @@ type FormSignInProps = {
 export const FormSignin = ({ email, password }: FormSignInProps) => {
   const {
     handleSubmit,
-    register,
     control,
     formState: { errors },
   } = useForm<FormSignInProps>({
     resolver: zodResolver(SingInSchema),
-    mode: "onSubmit",
+    mode: "all",
     criteriaMode: "all",
   });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormSignInProps> = async (data) => {
-    console.log(data);
-    router.push("/dashboard/main");
+    alert(JSON.stringify(data));
+    await router.push("/dashboard/main");
   };
 
   return (
@@ -43,7 +42,13 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
           name="email"
           control={control}
           render={({ field }) => (
-            <TextField {...field} id="email" type="email" label="E-mail" />
+            <TextField
+              {...field}
+              id="email"
+              type="email"
+              label="E-mail"
+              required
+            />
           )}
         />
         {
@@ -55,7 +60,13 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
           name="password"
           control={control}
           render={({ field }) => (
-            <TextField {...field} id="password" type="password" label="Senha" />
+            <TextField
+              {...field}
+              id="password"
+              type="password"
+              label="Senha"
+              required
+            />
           )}
         />
         {
@@ -66,6 +77,7 @@ export const FormSignin = ({ email, password }: FormSignInProps) => {
       </S.Inputs>
       <S.CTA>
         <Button
+          type="submit"
           color="primary"
           labelColor="white"
           variant="contained"

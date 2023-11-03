@@ -36,6 +36,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     icon,
     size = "medium",
     variant,
+    as,
     ...props
   },
   ref,
@@ -49,6 +50,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     variant={variant}
     ref={ref}
     hasIcon={!!icon}
+    as={as}
     {...props}
   >
     {!!icon && icon}

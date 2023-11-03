@@ -3,25 +3,25 @@ import { ContainerProps } from ".";
 
 const containerModifiers = {
   none: () => css`
-    padding: 0;
+    margin: 0;
   `,
   small: () => css`
-    padding: 2rem;
+    margin: 10rem 30rem;
   `,
   medium: () => css`
-    padding: 4rem;
+    margin: 10rem 40rem;
   `,
   large: () => css`
-    padding: 6rem;
+    margin: 10rem 50rem;
   `,
   xlarge: () => css`
-    padding: 8rem;
+    margin: 10rem 60rem;
   `,
   huge: () => css`
-    padding: 10rem;
+    margin: 10rem 70rem;
   `,
   fluid: () => css`
-    padding: auto;
+    margin: auto;
   `,
 };
 

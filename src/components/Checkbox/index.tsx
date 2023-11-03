@@ -5,7 +5,7 @@ import * as S from "./styles";
 type CheckboxTypes = InputHTMLAttributes<HTMLInputElement>;
 
 export type CheckboxProps = {
-  children?: string;
+  children: string;
   childrenFor?: string;
   isChecked?: boolean;
   labelColor?: keyof DefaultTheme["colors"];
@@ -13,7 +13,7 @@ export type CheckboxProps = {
   disabled?: boolean;
   onCheck?: (status: boolean) => void;
   required?: boolean;
-  value?: string | ReadonlyArray<string> | number | boolean;
+  value?: string | number | boolean;
 } & CheckboxTypes;
 
 const Checkbox = ({
@@ -52,7 +52,7 @@ const Checkbox = ({
           disabled={disabled}
           labelColor={labelColor}
         >
-          {children}{" "}
+          {children}&nbsp;
           {required && <S.Asterisk disabled={disabled}>*</S.Asterisk>}
         </S.Label>
       )}

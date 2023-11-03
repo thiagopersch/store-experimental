@@ -3,9 +3,11 @@ import media from "styled-media-query";
 
 export const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  gap: 1rem;
-  padding: 5rem;
+  gap: 2rem;
+  padding: 4rem;
 `;
 
 export const Header = styled.div`
@@ -15,9 +17,9 @@ export const Header = styled.div`
 `;
 
 export const InputsDescription = styled.div`
-  padding: 1rem 50rem;
+  width: 70rem;
 
   ${media.lessThan("medium")`
-    padding: 0;
+    width: 100%;
   `}
 `;
