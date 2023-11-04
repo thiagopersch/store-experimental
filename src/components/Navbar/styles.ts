@@ -1,8 +1,28 @@
+import { darken } from "polished";
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 import { NavbarProps } from ".";
 
+const navbarModifiers = {
+  absolute: () => css`
+    position: absolute;
+  `,
+  fixed: () => css`
+    position: fixed;
+  `,
+  relative: () => css`
+    position: relative;
+  `,
+  static: () => css`
+    position: static;
+  `,
+  sticky: () => css`
+    position: sticky;
+  `,
+};
+
 export const Wrapper = styled.nav<NavbarProps>`
-  ${({ theme }) => css`
+  ${({ theme, color, position, enableColorOnDark }) => css`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -10,8 +30,13 @@ export const Wrapper = styled.nav<NavbarProps>`
     height: 8rem;
     width: 100%;
     color: ${theme.colors.white};
-    background-color: ${theme.colors.primary};
+    background-color: ${enableColorOnDark
+      ? darken(0.1, theme.colors[color])
+      : theme.colors[color]};
     padding: ${theme.spacings.xsmall};
+    transition: ${theme.transitions.fast};
+
+    ${!!position && navbarModifiers[position]};
   `}
 `;
 
@@ -31,8 +56,14 @@ export const LogoLink = styled.div`
   `}
 `;
 
-export const Menu = styled.ul``;
-
-export const MenuItem = styled.li`
-  ${({ theme }) => css``}
+export const SearchCTA = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+`;
+export const Search = styled.div`
+  ${media.lessThan("medium")`
+    display: none;
+  `}
 `;
