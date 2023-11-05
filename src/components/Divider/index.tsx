@@ -1,12 +1,11 @@
 import * as S from "./styles";
 
 export type DividerProps = {
-  absolute?: boolean;
   light?: boolean;
 };
 
-const Divider = ({ absolute = false, light = false }: DividerProps) => {
-  return <S.Wrapper absolute={absolute} light={light} />;
+const Divider = ({ light = false }: DividerProps) => {
+  return <S.Wrapper light={light} />;
 };
 
 export default Divider;

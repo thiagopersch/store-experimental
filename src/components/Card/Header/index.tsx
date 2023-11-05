@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import * as S from "./styles";
 
 export type HeaderProps = {
-  children: ReactNode;
+  children: string | ReactNode;
 };
 
 const Header = ({ children }: HeaderProps) => {

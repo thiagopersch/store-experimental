@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import { DefaultTheme } from "styled-components";
+
 import * as S from "./styles";
 
 export type BaseProps = {
-  children: ReactNode;
+  children: string | ReactNode;
   color: keyof DefaultTheme["colors"];
 };
 

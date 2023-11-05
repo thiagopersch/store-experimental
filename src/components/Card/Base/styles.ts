@@ -6,7 +6,7 @@ import { BaseProps } from ".";
 export const Wrapper = styled.div<BaseProps>`
   ${({ theme, color }) => css`
     height: auto;
-    width: 25rem;
+    width: calc(35% / 2);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,7 +23,7 @@ export const Wrapper = styled.div<BaseProps>`
     }
 
     ${media.lessThan("medium")`
-      width: 100%;
+      width: 200rem;
     `}
   `}
 `;
