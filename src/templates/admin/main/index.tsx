@@ -11,18 +11,7 @@ export default function DashboardMain() {
   return (
     <Base>
       <S.Wrapper>
-        <Card.Root>
-          <Card.Header>ASdnoaisdnaosidnoias</Card.Header>
-          <Card.Content>asiudhbaiusduias</Card.Content>
-          <Card.Actions>
-            <Link href="#" passHref>
-              <Button color="primary" labelColor="primary" variant="text">
-                Teste
-              </Button>
-            </Link>
-          </Card.Actions>
-        </Card.Root>
-        <Card.Root>
+        <Card.Root color="primary">
           <Card.Header>ASdnoaisdnaosidnoias</Card.Header>
           <Card.Content>asiudhbaiusduias</Card.Content>
           <Card.Actions>
