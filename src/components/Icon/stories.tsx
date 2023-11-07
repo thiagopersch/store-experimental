@@ -17,6 +17,6 @@ export const Default: Story = {
   args: {
     children: <Trash />,
     color: "primary",
-    size: "medium",
+    size: "small",
   },
 };

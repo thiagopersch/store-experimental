@@ -1,28 +1,64 @@
 import { ChevronDown } from "@styled-icons/feather";
-import styled, { css } from "styled-components";
-import media from "styled-media-query";
+import { darken } from "polished";
+import styled, { DefaultTheme, css } from "styled-components";
+import { DropdownProps } from ".";
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
+type dropDownProps = Pick<
+  DropdownProps,
+  "color" | "background" | "dark" | "isOpen" | "disabled" | "size"
+>;
+
+const dropDownModifiers = {
+  disabled: (theme: DefaultTheme) => css`
+    cursor: not-allowed;
+    color: ${theme.colors.grey};
+    pointer-events: none;
+  `,
+  small: () => css`
+    padding: 1.6rem;
+  `,
+  medium: () => css`
+    padding: 2.4rem;
+  `,
+  large: () => css`
+    padding: 3.2rem;
+  `,
+  huge: () => css`
+    padding: 5.6rem;
+  `,
+};
+
+export const Wrapper = styled.div<dropDownProps>`
+  ${({
+    theme,
+    color = "primary",
+    dark,
+    background = "transparent",
+    disabled,
+    size,
+  }) => css`
     display: contents;
     --z-idx: calc(${theme.layers.overlay} - 1);
+    background-color: ${dark
+      ? darken(0.1, theme.colors[background])
+      : theme.colors[background]};
+    color: ${dark ? darken(0.1, theme.colors[color]) : theme.colors[color]};
+    transition: ${theme.transitions.fast};
+
+    ${!!disabled && dropDownModifiers.disabled(theme)};
+    ${!!size && dropDownModifiers[size]()};
   `}
 `;
 
-type ContainerProps = {
-  isOpen: boolean;
-};
-
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<dropDownProps>`
   ${({ theme, isOpen }) => css`
     cursor: pointer;
+    display: flex;
+    align-items: center;
     position: relative;
     height: 100%;
     width: 100%;
     min-width: auto;
-    color: ${theme.colors.white};
-    display: flex;
-    align-items: center;
 
     ${isOpen &&
     css`
@@ -31,43 +67,52 @@ export const Container = styled.div<ContainerProps>`
   `}
 `;
 
-export const Title = styled.div`
+export const UserContainer = styled.div`
   ${({ theme }) => css`
-    cursor: pointer;
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+    align-items: center;
+    align-content: center;
     padding: 0 ${theme.spacings.xsmall};
   `}
 `;
 
-type ContentProps = {
-  isOpen: boolean;
-};
+export const ImageWrapper = styled.div`
+  margin: 0 0.5rem;
+`;
 
-export const Content = styled.div<ContentProps>`
-  ${({ theme, isOpen }) => css`
+export const ArrowIcon = styled(ChevronDown)<dropDownProps>`
+  ${({ isOpen }) => css`
+    width: 2.4rem;
+    stroke-width: 1.5;
+    transition: transform 0.3s ease;
+
+    ${isOpen &&
+    css`
+      transform: rotateZ(180deg);
+    `}
+  `}
+`;
+
+export const Content = styled.div<dropDownProps>`
+  ${({ theme, background = "white", isOpen }) => css`
     position: absolute;
-    background: ${theme.colors.white};
-    width: 100%;
-    min-width: 21rem;
+    background: ${theme.colors[background]};
+    width: auto;
+    max-width: 100%;
     padding: 1rem;
-    padding-top: 1rem;
     top: 100%;
-    left: 15%;
-    transform: translateX(-50%);
     border-radius: 0.3rem;
-    z-index: ${theme.layers.modal};
-    transition: all 0.2s ease-out;
+    z-index: ${theme.layers.menu};
+    transition: ${theme.transitions.fast};
+    box-shadow: ${theme.shadows.default};
 
     ${!isOpen &&
     css`
       visibility: hidden;
       opacity: 0;
-      transform: translateX(-50%) translateY(-0.2rem);
+      transform: translateY(50%);
     `}
-
     > ul {
       list-style: none;
     }
@@ -79,7 +124,10 @@ export const ListItem = styled.li`
     padding: 1.5rem;
     text-align: left;
     font-size: ${theme.fonts.sizes.xsmall};
+    white-space: break-spaces;
     color: ${theme.colors.grey};
+    list-style: none;
+    transition: ${theme.transitions.fast};
 
     :hover {
       background: #e9e9e9;
@@ -96,10 +144,15 @@ export const ListItem = styled.li`
   `}
 `;
 
-type OverlayProps = {
-  isOpen: boolean;
-};
-export const Overlay = styled.div<OverlayProps>`
+export const Item = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const Overlay = styled.div<dropDownProps>`
   ${({ isOpen }) => css`
     visibility: hidden;
     opacity: 0;
@@ -117,37 +170,5 @@ export const Overlay = styled.div<OverlayProps>`
       visibility: visible;
       opacity: 1;
     `};
-  `}
-`;
-
-export const UserContainer = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    font-family: ${theme.fonts.family.primary};
-    font-weight: ${theme.fonts.weight.normal};
-    color: ${theme.colors.white};
-
-    ${media.lessThan("medium")`
-      font-size: ${theme.fonts.sizes.xsmall};
-    `}
-  `}
-`;
-
-type ArrowIconProps = {
-  isOpen: boolean;
-};
-export const ArrowIcon = styled(ChevronDown)<ArrowIconProps>`
-  ${({ isOpen }) => css`
-    width: 2.4rem;
-    stroke-width: 2;
-    transition: transform 0.3s ease;
-
-    ${isOpen &&
-    css`
-      transform: rotateZ(180deg);
-    `}
   `}
 `;

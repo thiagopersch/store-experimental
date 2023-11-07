@@ -5,7 +5,16 @@ import * as S from "./styles";
 export type IconProps = {
   children: ReactNode;
   color: keyof DefaultTheme["colors"];
-  size: "small" | "medium" | "large";
+  size:
+    | "xxsmall"
+    | "xsmall"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "huge"
+    | "xhuge";
 };
 
 const Icon = ({ children, color, size }: IconProps) => {
