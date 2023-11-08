@@ -14,7 +14,7 @@ const LoadingComponent = () => {
         height: "100vh",
       }}
     >
-      <OrbitSpinner color="#6314A8" animationduration={5000} size={150} />
+      <OrbitSpinner color="#6314A8" animationDuration={500} size={200} />
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { ReactNode, Suspense } from "react";
+import { Suspense } from "react";
 
-import LoadingComponent from "@/components/Loading";
-
+import Loading from "./loading";
 import ThemeContextProvider from "./theme-provider";
 
 const poppins = Poppins({
@@ -18,14 +17,14 @@ export const metadata: Metadata = {
 };
 
 type ThemeProviderProps = {
-  children?: ReactNode | string;
+  children: React.ReactNode;
 };
 
 export default function RootLayout({ children }: ThemeProviderProps) {
   return (
     <html lang="pt-br">
       <body className={poppins.className}>
-        <Suspense fallback={<LoadingComponent />}>
+        <Suspense fallback={<Loading />}>
           <ThemeContextProvider>{children}</ThemeContextProvider>
         </Suspense>
       </body>
