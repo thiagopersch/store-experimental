@@ -11,6 +11,7 @@ Table user {
   created_at timestamp
   updated_at timestamp
   deleted_at timestamp
+
 }
 
 // Níveis de acessos
@@ -153,7 +154,7 @@ Table profission {
 }
 
 // Situação do funcionário
-Table situation_employee {
+Table situation {
   id uuid [primary key]
   code varchar
   name varchar
@@ -378,7 +379,7 @@ Table segment {
 }
 
 // Tipo do cli/for
-Table supplier_customer_type {
+Table supplier_customer_type{
   id uuid [primary key]
   segment_id uuid
   name varchar
@@ -444,7 +445,7 @@ Table customer_supplier {
 }
 
 //categoria do produto
-Table product_categories {
+Table category {
   id uuid [primary key]
   name varchar
   code varchar
@@ -455,7 +456,7 @@ Table product_categories {
 }
 
 // sub-categoria do produto
-Table product_sub_categories {
+Table sub_category {
   id uuid [primary key]
   category_id uuid
   name varchar
@@ -467,7 +468,7 @@ Table product_sub_categories {
 }
 
 // Tipo do produto
-Table product_types {
+Table product_type {
   id uuid [primary key]
   name varchar
   code varchar
@@ -478,7 +479,7 @@ Table product_types {
 }
 
 // Tipos de pagamentos
-Table payment_types {
+Table payment_type {
   id uuid [primary key]
   name varchar
   description varchar
@@ -489,7 +490,7 @@ Table payment_types {
 }
 
 // Tipo de moeda
-Table coin_types {
+Table coin_type {
   id uuid [primary key]
   sigla varchar
   name varchar
@@ -499,7 +500,7 @@ Table coin_types {
 }
 
 // Tipo de unidades
-Table unity_types {
+Table unity_type {
   id uuid [primary key]
   code varchar
   name varchar
@@ -511,7 +512,7 @@ Table unity_types {
 }
 
 // Produtos
-Table product {
+Table products {
   id uuid [primary key]
   branch_id uuid
   category_id uuid
@@ -571,7 +572,7 @@ Table measurement_chart {
 }
 
 // Desconto dos produtos
-Table product_discounts {
+Table product_discount {
   id uuid [primary key]
   products_id uuid
   buy varchar
@@ -585,7 +586,7 @@ Table product_discounts {
 }
 
 // Ordem de compra
-Table purchase_orders {
+Table purchase_order {
   id uuid [primary key]
   branch_id uuid
   customer_supplier_id uuid
