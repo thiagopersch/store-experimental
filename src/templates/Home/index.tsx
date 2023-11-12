@@ -1,17 +1,44 @@
 import { Dropdown } from "@/components/Dropdown";
+import Typography from "@/components/Typography";
+import { Home as HomeIcon } from "@styled-icons/feather/Home";
+import { useState } from "react";
 import Base from "../Base";
 
 export default function Home() {
+  const [show, setShow] = useState(false);
+
+  const toggleBase = () => {
+    setShow((current) => !current);
+  };
+
   return (
     <Base>
+      <Typography color="primary" size="large" align="center" mobile>
+        Dropdown
+      </Typography>
       <Dropdown.Root>
-        <Dropdown.Header>Teste</Dropdown.Header>
-        <Dropdown.Content>
+        <Dropdown.Header
+          color="primary"
+          size="small"
+          onClick={toggleBase}
+          isOpen={show}
+        >
+          My dropdown
+        </Dropdown.Header>
+        <Dropdown.Content isOpen={show}>
           <Dropdown.ListItem>
-            <Dropdown.Item>Item 1</Dropdown.Item>
-            <Dropdown.Item>Item 2</Dropdown.Item>
-            <Dropdown.Item>Item 3</Dropdown.Item>
-            <Dropdown.Item>Item 4</Dropdown.Item>
+            <Dropdown.Item color="primary" size="xsmall" icon={<HomeIcon />}>
+              Home
+            </Dropdown.Item>
+            <Dropdown.Item color="primary" size="xsmall" icon={<HomeIcon />}>
+              Home
+            </Dropdown.Item>
+            <Dropdown.Item color="primary" size="xsmall" icon={<HomeIcon />}>
+              Home
+            </Dropdown.Item>
+            <Dropdown.Item color="primary" size="xsmall" icon={<HomeIcon />}>
+              Home
+            </Dropdown.Item>
           </Dropdown.ListItem>
         </Dropdown.Content>
       </Dropdown.Root>

@@ -6,6 +6,7 @@ const meta: Meta<typeof Header> = {
   component: Header,
   argTypes: {
     children: { type: "string" },
+    color: { type: "string" },
   },
 };
 
@@ -15,5 +16,6 @@ type Story = StoryObj<typeof Header>;
 export const Default: Story = {
   args: {
     children: "My Header",
+    color: "primary",
   },
 };

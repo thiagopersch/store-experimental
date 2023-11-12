@@ -1,30 +1,16 @@
+import { ChevronDown } from "@styled-icons/feather";
+import { darken } from "polished";
 import styled, { css } from "styled-components";
 import { HeaderProps } from ".";
 
-export const Wrapper = styled.div<HeaderProps>`
-  ${({ theme, isOpen }) => css`
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    min-width: auto;
+type HeaderPropsPick = Pick<
+  HeaderProps,
+  "color" | "dark" | "disabled" | "image" | "size" | "isOpen"
+>;
 
-    ${isOpen &&
-    css`
-      z-index: var(--z-idx);
-    `}
-  `}
-`;
-
-export const UserContainer = styled.div`
+export const Wrapper = styled.div<HeaderPropsPick>`
   ${({ theme }) => css`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: center;
-    padding: 0 ${theme.spacings.xsmall};
+    transition: ${theme.transitions.fast};
   `}
 `;
 
@@ -32,11 +18,20 @@ export const ImageWrapper = styled.div`
   margin: 0 0.5rem;
 `;
 
-export const Icon = styled.svg<HeaderProps>`
-  ${({ isOpen }) => css`
+export const Label = styled.span<HeaderPropsPick>`
+  ${({ theme, color, dark, size }) => css`
+    font-size: ${theme.fonts.sizes[size]};
+    color: ${dark ? darken(0.1, theme.colors[color]) : theme.colors[color]};
+  `}
+`;
+
+export const ArrowIcon = styled(ChevronDown)<HeaderPropsPick>`
+  ${({ theme, isOpen, color, dark, size }) => css`
     width: 2.4rem;
     stroke-width: 1.5;
     transition: transform 0.3s ease;
+    font-size: ${theme.fonts.sizes[size]};
+    color: ${dark ? darken(0.1, theme.colors[color]) : theme.colors[color]};
 
     ${isOpen &&
     css`
