@@ -13,6 +13,12 @@ export const Wrapper = styled.div<ContentProps>`
     z-index: ${theme.layers.menu};
     transition: ${theme.transitions.fast};
     box-shadow: ${theme.shadows.default};
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 
     ${!isOpen &&
     css`

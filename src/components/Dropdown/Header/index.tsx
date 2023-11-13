@@ -1,5 +1,3 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import Image from "next/image";
 import { DefaultTheme } from "styled-components";
 
 import * as S from "./styles";
@@ -10,11 +8,6 @@ export type HeaderProps = {
   size: keyof DefaultTheme["fonts"]["sizes"];
   dark?: boolean;
   disabled?: boolean;
-  image?: string | StaticImport;
-  alt?: string | any;
-  width?: number;
-  height?: number;
-  quality?: number;
   isOpen?: boolean;
   onClick?: () => void;
 };
@@ -22,30 +15,14 @@ export type HeaderProps = {
 const Header = ({
   children,
   color,
-  size,
-  disabled,
-  dark,
-  image,
-  alt,
-  height,
-  width,
-  quality,
+  size = "medium",
+  disabled = false,
+  dark = false,
   isOpen,
   onClick,
 }: HeaderProps) => {
   return (
     <S.Wrapper color={color} size={size} disabled={disabled} onClick={onClick}>
-      {!!image && (
-        <S.ImageWrapper>
-          <Image
-            src={image}
-            alt={alt}
-            width={width}
-            height={height}
-            quality={quality}
-          />
-        </S.ImageWrapper>
-      )}
       {!!children && (
         <S.Label size={size} color={color} dark={dark}>
           {children}

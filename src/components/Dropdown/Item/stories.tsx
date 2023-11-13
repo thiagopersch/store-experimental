@@ -1,9 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Header from ".";
+import { Home } from "@styled-icons/feather";
+import Item from ".";
 
-const meta: Meta<typeof Header> = {
-  title: "Surfaces/Dropdown/Header",
-  component: Header,
+const meta: Meta<typeof Item> = {
+  title: "Surfaces/Dropdown/Item",
+  component: Item,
   argTypes: {
     children: { type: "string" },
     color: { type: "string" },
@@ -25,20 +26,30 @@ const meta: Meta<typeof Header> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Header>;
+type Story = StoryObj<typeof Item>;
 
 export const Default: Story = {
   args: {
-    children: "My Header",
+    children: "My Item",
     color: "primary",
     size: "medium",
+    dark: false,
   },
 };
-
-export const Disabled: Story = {
+export const dark: Story = {
   args: {
-    children: "My Header",
-    disabled: true,
+    children: "My Item",
+    color: "primary",
     size: "medium",
+    dark: true,
+  },
+};
+export const WithIcon: Story = {
+  args: {
+    children: "My Item",
+    color: "primary",
+    size: "medium",
+    dark: false,
+    icon: <Home />,
   },
 };
