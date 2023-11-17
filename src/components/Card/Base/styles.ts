@@ -6,10 +6,12 @@ import { BaseProps } from ".";
 export const Wrapper = styled.div<BaseProps>`
   ${({ theme, color }) => css`
     height: auto;
-    width: calc(35% / 2);
+    width: 100%;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
     border: 0.1rem solid ${setLightness(0.9, theme.colors[color])};
     border-radius: 0.5rem;
@@ -23,7 +25,8 @@ export const Wrapper = styled.div<BaseProps>`
     }
 
     ${media.lessThan("medium")`
-      width: 200rem;
+      width: 100%;
+      flex-direction: column;
     `}
   `}
 `;

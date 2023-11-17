@@ -12,7 +12,7 @@ export const Wrapper = styled.div<ContentProps>`
     border-radius: 0.3rem;
     z-index: ${theme.layers.menu};
     transition: ${theme.transitions.fast};
-    box-shadow: ${theme.shadows.default};
+    box-shadow: ${theme.shadows.focus};
     display: flex;
     flex-direction: column;
     gap: 0.5rem;

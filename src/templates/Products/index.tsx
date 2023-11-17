@@ -19,13 +19,18 @@ export default function Products() {
           infiniteLoop
           centerMode
           emulateTouch
-          interval={1500}
-          centerSlidePercentage={14}
+          axis="vertical"
+          interval={2000}
+          centerSlidePercentage={30}
+          transitionTime={1000}
           showStatus={false}
           showIndicators={false}
+          showArrows={false}
+          useKeyboardArrows
+          selectedItem={0}
         >
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -59,7 +64,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -93,7 +98,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -127,7 +132,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -161,7 +166,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -195,7 +200,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -229,7 +234,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -263,7 +268,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -297,7 +302,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -331,7 +336,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -365,7 +370,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -399,7 +404,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -433,7 +438,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -467,7 +472,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -501,7 +506,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -535,7 +540,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -569,7 +574,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -603,7 +608,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -637,7 +642,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -671,7 +676,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -705,7 +710,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -739,7 +744,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
@@ -773,7 +778,7 @@ export default function Products() {
             </Card.Root>
           </S.CardProducts>
           <S.CardProducts>
-            <Card.Root>
+            <Card.Root color="primary">
               <Card.Header>
                 <Link href="/" passHref>
                   <Image
