@@ -50,6 +50,7 @@
     "react-hook-form": "^7.46.2",
     "react-input-mask": "^2.0.4",
     "react-merge-refs": "^2.0.2",
+    "react-multi-carousel": "^2.8.4",
     "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
     "react-scripts": "^5.0.1",
