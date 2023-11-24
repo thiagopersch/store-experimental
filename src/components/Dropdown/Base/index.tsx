@@ -17,7 +17,7 @@ const Base = ({ children }: BaseProps) => {
       <S.Container isOpen={show} onClick={toggleBase}>
         {children}
       </S.Container>
-      <S.Overlay isOpen={show} onClick={() => setShow(true)} />
+      {/* <S.Overlay isOpen={show} onClick={() => setShow(false)} /> */}
     </S.Wrapper>
   );
 };

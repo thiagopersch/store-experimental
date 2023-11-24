@@ -6,7 +6,6 @@ import Logo from "../../assets/images/white/logo.png";
 
 import { useState } from "react";
 import Button from "../Button";
-import { Dropdown } from "../Dropdown";
 import TextField from "../TextField";
 import * as S from "./styles";
 
@@ -40,7 +39,7 @@ const Navbar = ({ color, position, enableColorOnDark }: NavbarProps) => {
           />
         </Link>
       </S.LogoLink>
-      <div>
+      {/* <div>
         <Dropdown.Root>
           <Dropdown.Header
             color="white"
@@ -73,7 +72,7 @@ const Navbar = ({ color, position, enableColorOnDark }: NavbarProps) => {
             </Dropdown.ListItem>
           </Dropdown.Content>
         </Dropdown.Root>
-      </div>
+      </div> */}
       <S.SearchCTA>
         <S.Search>
           <form>
