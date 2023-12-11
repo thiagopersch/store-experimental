@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { darken } from "polished";
 import styled, { css } from "styled-components";
 import media from "styled-media-query";
@@ -36,6 +37,11 @@ export const Wrapper = styled.nav<NavbarProps>`
     padding: ${theme.spacings.xsmall};
     transition: ${theme.transitions.fast};
 
+    ${media.greaterThan("medium")`
+      width: 100%;
+      max-width: 100%;
+    `}
+
     ${!!position && navbarModifiers[position]};
   `}
 `;
@@ -56,14 +62,32 @@ export const LogoLink = styled.div`
   `}
 `;
 
+export const Logo = styled(Link)`
+  ${({ theme }) => css`
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: ${theme.transitions.fast};
+
+    &:hover {
+      transform: scale(1);
+    }
+
+    ${media.lessThan("medium")`
+      display: none;
+    `}
+  `}
+`;
+
 export const SearchCTA = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  max-width: 100%;
+  width: 100%;
   gap: 2rem;
-`;
-export const Search = styled.div`
-  ${media.lessThan("medium")`
-    display: none;
-  `}
 `;

@@ -13,11 +13,11 @@ type FabTypes =
 
 export type FabProps = {
   children?: string | ReactNode;
-  color?: keyof DefaultTheme["colors"];
+  color: keyof DefaultTheme["colors"];
   hasIcon?: boolean;
   icon?: ReactNode;
   as?: ElementType;
-  labelColor?: keyof DefaultTheme["colors"];
+  labelColor: keyof DefaultTheme["colors"];
   disabled?: boolean;
   size?: "small" | "medium" | "large";
   variant?: "circular" | "extended";

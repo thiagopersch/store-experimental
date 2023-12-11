@@ -52,23 +52,15 @@ const FabModifiers = {
 };
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({
-    theme,
-    color = "primary",
-    variant,
-    size,
-    disabled,
-    hasIcon,
-    labelColor = "white",
-  }) => css`
+  ${({ theme, color, variant, size, disabled, hasIcon, labelColor }) => css`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.2rem;
     width: auto;
     white-space: nowrap;
-    border: 0;
-    border-radius: 100rem;
+    border: none;
+    border-radius: 30rem;
     color: ${theme.colors[labelColor]};
     background-color: ${theme.colors[color]};
     font-family: ${theme.fonts.family.primary};
@@ -82,12 +74,12 @@ export const Wrapper = styled.button<WrapperProps>`
     text-align: center;
     outline: none;
     cursor: pointer;
-    box-shadow: ${theme.shadows.default};
+    box-shadow: ${color === "transparent" ? "none" : theme.shadows.default};
     transition: ${theme.transitions.fast};
 
     &:hover {
       transition: ${theme.transitions.hover};
-      box-shadow: ${theme.shadows.hover};
+      box-shadow: ${color === "transparent" ? "none" : theme.shadows.hover};
       background-color: ${darken(0.15, theme.colors[color])};
     }
 

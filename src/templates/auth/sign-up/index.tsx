@@ -12,6 +12,7 @@ import Base from "@/templates/Base";
 import { SignUpSchema } from "./schema";
 
 import Checkbox from "@/components/Checkbox";
+import Select from "@/components/Select";
 import * as S from "./styles";
 
 type FormSignUpProps = {
@@ -127,13 +128,24 @@ const SignUp = ({
                 name="sex"
                 control={control}
                 render={({ field }) => (
-                  <TextField
+                  <Select
+                    options={[
+                      { label: "Masculino", value: "Masculino" },
+                      { label: "Feminino", value: "Feminino" },
+                    ]}
                     {...field}
                     id="sex"
-                    type="text"
                     label="Sexo"
                     required
                   />
+
+                  // <TextField
+                  //   {...field}
+                  //   id="sex"
+                  //   type="text"
+                  //   label="Sexo"
+                  //   required
+                  // />
                 )}
               />
               {

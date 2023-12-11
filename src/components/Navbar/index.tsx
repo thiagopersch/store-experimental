@@ -1,13 +1,14 @@
-import { DefaultTheme } from "styled-components";
-
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../assets/images/white/logo.png";
-
 import { useState } from "react";
+import { DefaultTheme } from "styled-components";
+
 import Button from "../Button";
 import TextField from "../TextField";
+
 import * as S from "./styles";
+
+import Logo from "@/assets/images/white/logo.png";
 
 export type NavbarProps = {
   color: keyof DefaultTheme["colors"];
@@ -23,58 +24,16 @@ const Navbar = ({ color, position, enableColorOnDark }: NavbarProps) => {
   };
 
   return (
-    <S.Wrapper
-      color={color}
-      position={position}
-      enableColorOnDark={enableColorOnDark}
-    >
-      <S.LogoLink>
-        <Link href="/" passHref>
-          <Image
-            src={Logo}
-            width={150}
-            height={50}
-            quality={80}
-            alt="logo-link"
-          />
-        </Link>
-      </S.LogoLink>
-      {/* <div>
-        <Dropdown.Root>
-          <Dropdown.Header
-            color="white"
-            size="small"
-            onClick={toggleBase}
-            isOpen={show}
-          >
-            My dropdown
-          </Dropdown.Header>
-          <Dropdown.Content isOpen={show}>
-            <Dropdown.ListItem color="primary">
-              <Dropdown.Item color="primary" size="xsmall">
-                Home
-              </Dropdown.Item>
-            </Dropdown.ListItem>
-            <Dropdown.ListItem color="primary">
-              <Dropdown.Item color="primary" size="xsmall">
-                Home
-              </Dropdown.Item>
-            </Dropdown.ListItem>
-            <Dropdown.ListItem color="primary">
-              <Dropdown.Item color="primary" size="xsmall">
-                Home
-              </Dropdown.Item>
-            </Dropdown.ListItem>
-            <Dropdown.ListItem color="primary">
-              <Dropdown.Item color="primary" size="xsmall">
-                Home
-              </Dropdown.Item>
-            </Dropdown.ListItem>
-          </Dropdown.Content>
-        </Dropdown.Root>
-      </div> */}
-      <S.SearchCTA>
-        <S.Search>
+    <>
+      <S.Wrapper
+        color={color}
+        position={position}
+        enableColorOnDark={enableColorOnDark}
+      >
+        <S.Logo href="/" passHref>
+          <Image src={Logo} width={150} quality={80} alt="Logo" priority />
+        </S.Logo>
+        <S.SearchCTA>
           <form>
             <TextField
               type="search"
@@ -83,16 +42,16 @@ const Navbar = ({ color, position, enableColorOnDark }: NavbarProps) => {
               name="search"
             />
           </form>
-        </S.Search>
-        <div>
-          <Link href="/sign-in">
-            <Button color="success" labelColor="white" variant="contained">
-              Login
-            </Button>
-          </Link>
-        </div>
-      </S.SearchCTA>
-    </S.Wrapper>
+          <div>
+            <Link href="/sign-in">
+              <Button color="success" labelColor="white" variant="contained">
+                Login
+              </Button>
+            </Link>
+          </div>
+        </S.SearchCTA>
+      </S.Wrapper>
+    </>
   );
 };
 

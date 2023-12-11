@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Suspense } from "react";
-
 import Loading from "./loading";
 import ThemeContextProvider from "./theme-provider";
 

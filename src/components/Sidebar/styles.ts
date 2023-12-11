@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { darken } from "polished";
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, { DefaultTheme, css } from "styled-components";
+import media from "styled-media-query";
 
 export const Wrapper = styled.aside`
   ${({ theme }) => css`
@@ -13,6 +14,10 @@ export const Wrapper = styled.aside`
     background: ${theme.colors.white};
     box-shadow: ${theme.shadows.default};
     text-align: center;
+
+    ${media.lessThan("medium")`
+      display: none;
+    `}
   `}
 `;
 

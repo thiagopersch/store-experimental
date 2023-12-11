@@ -29,7 +29,7 @@ const Sidebar = () => {
   return (
     <S.Wrapper>
       <S.Logo href="/" passHref>
-        <Image src={Logo} width={150} quality={80} alt="Logo" />
+        <Image src={Logo} width={150} quality={80} alt="Logo" priority />
       </S.Logo>
       <S.Menu>
         <S.MenuItem active={pathname === "/"}>

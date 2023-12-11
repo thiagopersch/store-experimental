@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -12,6 +13,13 @@ export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
     background: ${theme.colors.white};
+
+    ${media.lessThan("medium")`
+      grid-template-columns: 42rem 1fr;
+      grid-template-areas:
+      "header header"
+      "main-content main-content";
+    `}
   `}
 `;
 
